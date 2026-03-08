@@ -216,76 +216,107 @@ elif modulo == "02. La Audiencia es el Centro":
 # INICIO MÓDULO 03: DATA STORYTELLING Y EL MENSAJE
 # ==============================================================================
 elif modulo == "03. Data Storytelling y El Mensaje":
-    st.write("### Navegación de Diapositivas")
-    slide = st.radio("Seleccione la Diapositiva:", ["Pág 35: Títulos vs Mensajes", "Pág 40: Selección de Gráficos", "Pág 45: Tablas vs Scorecards"], horizontal=True, label_visibility="collapsed")
+    st.write("### Navegación Dinámica")
+    slide = st.radio("Seleccione la Diapositiva:", ["1. Títulos vs Mensajes", "2. Atención Dirigida (Gráficos)", "3. De la Tabla al Scorecard"], horizontal=True, label_visibility="collapsed")
     
-    pantalla = st.container(height=650, border=True)
-    import time # Librería para las animaciones sobrias
+    st.markdown("<br>", unsafe_allow_html=True)
     import pandas as pd
     
-    with pantalla:
-        if slide == "Pág 35: Títulos vs Mensajes":
-            st.markdown('<div class="titulo-slide">El Título informa. El Mensaje DIRIGE.</div>', unsafe_allow_html=True)
+    if slide == "1. Títulos vs Mensajes":
+        st.markdown('<div class="titulo-slide">El Título informa. El Mensaje DIRIGE.</div>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide">La audiencia no debería tener que adivinar la conclusión mirando el gráfico. Su encabezado debe hacer el trabajo pesado.</div><br>', unsafe_allow_html=True)
+        
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.image("https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Análisis en sala de control", use_container_width=True)
+        
+        with col2:
+            st.markdown('<div class="alerta"><b>❌ El Título Inerte (Estándar Bajo):</b><br>"Resultados Operacionales y Costos Q1".<br><span style="font-size: 1.1rem;">(Obliga a la audiencia a buscar el problema entre los datos, agotando su atención).</span></div><br>', unsafe_allow_html=True)
             
-            col1, col2 = st.columns([1, 1.2])
-            with col1:
-                st.image("https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Análisis técnico en centro de control", use_container_width=True)
-            
-            with col2:
-                # Animación de aparición progresiva
-                ph = st.empty()
-                txt = ""
-                
-                txt += '<div class="alerta"><b>❌ Título Inerte (No moviliza):</b><br>"Resultados Operacionales y Costos Q1".<br><span style="font-size: 1.1rem;">Obliga a la audiencia a buscar el problema entre los datos.</span></div><br>'
-                ph.markdown(txt, unsafe_allow_html=True)
-                time.sleep(1.2) # Pausa sobria
-                
-                txt += '<div class="destacado"><b>✅ Mensaje Directivo (Moviliza):</b><br>"🚨 El sobrecosto en Mantenimiento pone en riesgo el cumplimiento del plan anual: Requiere gestión inmediata."</div><br>'
-                ph.markdown(txt, unsafe_allow_html=True)
-                time.sleep(1.2)
-                
-                txt += '<div class="texto-slide"><b>Llamado a la Acción:</b> Use el encabezado para decir qué está pasando y qué hay que hacer.</div>'
-                ph.markdown(txt, unsafe_allow_html=True)
+            st.markdown('<div class="destacado"><b>✅ El Mensaje Directivo (Estándar ICI):</b><br>"🚨 El sobrecosto en el Área de Molienda compromete el margen anual: Se requiere ajuste de plan hoy."<br><span style="font-size: 1.1rem;">(El gráfico que acompañe esto solo sirve como evidencia innegable de esta afirmación).</span></div>', unsafe_allow_html=True)
 
-        elif slide == "Pág 40: Selección de Gráficos":
-            st.markdown('<div class="titulo-slide">Atención Dirigida: El gráfico al servicio del mensaje</div>', unsafe_allow_html=True)
-            
-            # Datos simulados de costos mineros
-            datos = pd.DataFrame({
-                "Ítem": ["Energía", "Neumáticos", "Explosivos", "Repuestos", "Mantenimiento"],
-                "Presupuesto": [100, 80, 60, 90, 110],
-                "Real": [98, 82, 58, 92, 160] # La anomalía
+    elif slide == "2. Atención Dirigida (Gráficos)":
+        st.markdown('<div class="titulo-slide">Atención Dirigida: El gráfico no es adorno, es evidencia</div>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide">No todos los datos valen lo mismo. <b>Use el color estratégicamente</b> para guiar el ojo del directorio hacia la anomalía en un segundo.</div><br>', unsafe_allow_html=True)
+        
+        modo_grafico = st.toggle("Aplicar Atención Dirigida (Apagar ruido visual)")
+        
+        # Datos de ejemplo
+        datos_costos = pd.DataFrame({
+            "Área": ["Extracción", "Chancado", "Molienda", "Flotación", "Relaves"],
+            "Desviación (%)": [2, -1, 18, 3, 1]
+        }).set_index("Área")
+        
+        col_x, col_y = st.columns([1.5, 1])
+        
+        with col_x:
+            if not modo_grafico:
+                # Gráfico arcoíris (mal diseño)
+                st.error("❌ Sopa Visual: Los colores no significan nada, el cerebro se confunde.")
+                st.bar_chart(datos_costos, color=["#3b82f6"]) # Color genérico
+            else:
+                # Gráfico directivo (buen diseño)
+                st.success("✅ Atención Dirigida: El gris neutraliza, el rojo acentúa el problema.")
+                # Simulamos la atención dirigida pintando solo el problema
+                st.markdown("""
+                <div style="background-color: white; padding: 20px; border: 1px solid #ccc;">
+                    <h4 style="color: #333; text-align: center;">Desviación de Costos por Área Operativa (%)</h4>
+                    <div style="display: flex; align-items: flex-end; justify-content: space-around; height: 200px; padding-top: 20px;">
+                        <div style="width: 15%; background-color: #D1D5DB; height: 11%; text-align: center; color: black;">2%</div>
+                        <div style="width: 15%; background-color: #D1D5DB; height: 5%; text-align: center; color: black;">-1%</div>
+                        <div style="width: 15%; background-color: #DC2626; height: 100%; text-align: center; color: white; font-weight: bold;">18%</div>
+                        <div style="width: 15%; background-color: #D1D5DB; height: 16%; text-align: center; color: black;">3%</div>
+                        <div style="width: 15%; background-color: #D1D5DB; height: 5%; text-align: center; color: black;">1%</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-around; margin-top: 10px; font-weight: bold; font-size: 0.9rem; color: #555;">
+                        <div style="width: 15%; text-align: center;">Extracción</div>
+                        <div style="width: 15%; text-align: center;">Chancado</div>
+                        <div style="width: 15%; text-align: center; color: #DC2626;">Molienda</div>
+                        <div style="width: 15%; text-align: center;">Flotación</div>
+                        <div style="width: 15%; text-align: center;">Relaves</div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+        
+        with col_y:
+            st.info("💡 **Regla de Diseño ICI:**\n\nSi su mensaje habla del Área de Molienda, molienda debe ser el único elemento visualmente destacado. Todo lo demás es contexto (gris).")
+
+    elif slide == "3. De la Tabla al Scorecard":
+        st.markdown('<div class="titulo-slide">Minimalismo: Evite la "Sopa de Números"</div>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide">Pegar una planilla de Excel en la presentación es abdicar de su rol como ingeniero. Usted debe procesar el dato y entregar el *Insight*. Active el interruptor.</div><br>', unsafe_allow_html=True)
+        
+        modo_tabla = st.toggle("Transformar Excel a Scorecard Ejecutivo")
+        
+        if not modo_tabla:
+            st.error("❌ El error clásico: Copiar y pegar el Excel.")
+            df_bruto = pd.DataFrame({
+                "ID_Equipo": ["M-01", "M-02", "C-01", "C-02"],
+                "Tipo": ["Molino SAG", "Molino Bolas", "Chancador", "Correa"],
+                "Temp_Motor": [75.2, 78.1, 105.4, 65.0],
+                "Vibracion_mm": [2.1, 2.3, 8.9, 1.5],
+                "Horas_Uso": [4500, 4600, 4200, 1200],
+                "Estado": ["OK", "OK", "Falla Inminente", "OK"]
             })
-            
-            st.markdown('<div class="texto-slide">Compare el presupuesto vs. el gasto real. El gráfico debe destacar la desviación automáticamente.</div>', unsafe_allow_html=True)
-            st.bar_chart(datos.set_index("Ítem"), color=["#1E3A8A", "#DC2626"])
-            
-            st.markdown('<div class="alerta">💡 <b>Observación:</b> Note cómo el color rojo en "Mantenimiento" captura la mirada de inmediato. Eso es atención dirigida.</div>', unsafe_allow_html=True)
-
-        elif slide == "Pág 45: Tablas vs Scorecards":
-            st.markdown('<div class="titulo-slide">Evite la "Sopa de Números": Use Scorecards</div>', unsafe_allow_html=True)
-            
-            col_a, col_b = st.columns([1, 1.5])
-            with col_a:
-                st.image("https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Supervisión de flota en tiempo real", use_container_width=True)
-            
-            with col_b:
-                st.markdown('<div class="texto-slide">En un comité operativo, la audiencia necesita saber qué está fallando AHORA.</div><br>', unsafe_allow_html=True)
-                
-                # Animación secuencial de indicadores
-                ph2 = st.empty()
-                ind = ""
-                
-                ind += '<div style="font-size: 2rem; border-bottom: 1px solid #ddd; padding: 10px;">Camión CAEX 402: 🟢 <b>Disponible</b></div>'
-                ph2.markdown(ind, unsafe_allow_html=True)
-                time.sleep(0.8)
-                
-                ind += '<div style="font-size: 2rem; border-bottom: 1px solid #ddd; padding: 10px;">Pala Hidráulica 05: 🟡 <b>Baja Carga</b></div>'
-                ph2.markdown(ind, unsafe_allow_html=True)
-                time.sleep(0.8)
-                
-                ind += '<div style="font-size: 2rem; background-color: #FEF2F2; padding: 10px; border-left: 10px solid #DC2626;"><b>Chancador Primario: 🔴 Fuera de Servicio</b></div>'
-                ph2.markdown(ind, unsafe_allow_html=True)
+            st.dataframe(df_bruto, use_container_width=True)
+        else:
+            st.success("✅ Scorecard: Rápido, visual y enfocado en la excepción.")
+            st.markdown("""
+            <div style="display: flex; justify-content: space-between;">
+                <div style="width: 30%; background-color: #F0FDF4; border: 1px solid #16A34A; border-radius: 10px; padding: 20px; text-align: center;">
+                    <h2 style="margin:0; color: #16A34A;">🟢 Molinos</h2>
+                    <p style="font-size: 1.2rem; color: #333;">Parámetros Normales</p>
+                </div>
+                <div style="width: 30%; background-color: #FEF2F2; border: 2px solid #DC2626; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(220, 38, 38, 0.3);">
+                    <h2 style="margin:0; color: #DC2626;">🔴 Chancador C-01</h2>
+                    <p style="font-size: 1.2rem; color: #333; font-weight: bold;">Vibración Crítica (8.9mm)</p>
+                </div>
+                <div style="width: 30%; background-color: #F0FDF4; border: 1px solid #16A34A; border-radius: 10px; padding: 20px; text-align: center;">
+                    <h2 style="margin:0; color: #16A34A;">🟢 Correas</h2>
+                    <p style="font-size: 1.2rem; color: #333;">Parámetros Normales</p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            st.markdown("<br><p class='texto-slide'>El directorio solo necesita ver el cuadro central rojo para saber dónde asignar los recursos hoy.</p>", unsafe_allow_html=True)
 
 # ==============================================================================
 # FIN MÓDULO 03
