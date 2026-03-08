@@ -326,55 +326,61 @@ elif modulo == "03. Data Storytelling y El Mensaje":
 # INICIO MÓDULO 04: PUESTA EN ESCENA Y CONTINGENCIAS
 # ==============================================================================
 elif modulo == "04. Puesta en Escena y Contingencias":
-    st.write("### Navegación de Diapositivas")
-    slide = st.radio("Seleccione la Diapositiva:", ["Pág 122: Preguntas Difíciles", "Pág 123: Ley de Murphy", "Pág 124: Mensaje Final"], horizontal=True, label_visibility="collapsed")
+    st.write("### Navegación Dinámica")
+    slide = st.radio("Seleccione la Diapositiva:", ["1. Preguntas Difíciles", "2. Checklist de Murphy", "3. Mensaje Final"], horizontal=True, label_visibility="collapsed")
     
-    pantalla = st.container(height=650, border=True)
-    import time
+    st.markdown("<br>", unsafe_allow_html=True)
     
-    with pantalla:
-        if slide == "Pág 122: Preguntas Difíciles":
-            st.markdown('<div class="titulo-slide">Manejo Estratégico de Preguntas Difíciles</div>', unsafe_allow_html=True)
+    if slide == "1. Preguntas Difíciles":
+        st.markdown('<div class="titulo-slide">Manejo Estratégico de la Audiencia</div>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide">En una defensa técnica, el directorio probará la solidez de sus argumentos. <b>Haga clic en cada escenario</b> para ver la respuesta estratégica:</div><br>', unsafe_allow_html=True)
+        
+        col1, col2 = st.columns([1, 1.2])
+        with col1:
+            st.image("https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="El momento de la verdad", use_container_width=True)
+        
+        with col2:
+            with st.expander("🚨 Escenario 1: Le hacen una pregunta que NO sabe (y no debería saber)"):
+                st.error("**Estrategia: Honestidad Brutal.**")
+                st.write("Nunca invente un dato frente a un comité. Diga: *'Esa variable escapa al alcance de este modelo, pero es un punto crítico. Lo levantaré con el equipo y le enviaré el informe mañana a primera hora.'*")
             
-            col1, col2 = st.columns([1, 1.2])
-            with col1:
-                # Imagen de contexto: Un directorio minero haciendo preguntas
-                st.image("https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", use_container_width=True)
+            with st.expander("⚠️ Escenario 2: Le hacen una pregunta que SÍ debería saber, pero olvidó"):
+                st.warning("**Estrategia: Ganar Tiempo o Derivar.**")
+                st.write("1. **Diferir:** *'Ese es un punto excelente que se cruza con la lámina de CAPEX que veremos en 3 minutos. Lo abordamos ahí.'*\n2. **Rebotar a la audiencia:** Si hay un experto en la sala, valídelo: *'Gerente Pérez, con su experiencia en la planta antigua, ¿cómo veíamos este indicador?'*")
             
-            with col2:
-                ph_preg = st.empty()
-                txt_preg = '<div class="texto-slide"><b>Las preguntas difíciles conviene manejarlas con estrategia:</b></div><br>'
-                
-                txt_preg += '<div class="destacado">1. Sea honesto: Si la pregunta no corresponde o no conoce la respuesta, hágalo saber.</div><br>'
-                ph_preg.markdown(txt_preg, unsafe_allow_html=True)
-                time.sleep(1.5)
-                
-                txt_preg += '<div class="texto-slide"><b>Si debería saberla y no la sabe:</b></div>'
-                txt_preg += '<ul><li>Diferirla para más adelante.</li><li>"Justo en la próxima sesión lo veremos..."</li><li>Preguntar a la audiencia.</li><li>Contestar otra cosa.</li></ul>'
-                ph_preg.markdown(txt_preg, unsafe_allow_html=True)
+            with st.expander("🛡️ Escenario 3: Le hacen una pregunta hostil o fuera de contexto"):
+                st.success("**Estrategia: El Puente.**")
+                st.write("No confronte. Reconozca y redirija a su mensaje central: *'Entiendo su preocupación por el costo del año pasado, y precisamente por eso el modelo que propongo hoy asegura que no repitamos esa desviación.'*")
 
-        elif slide == "Pág 123: Ley de Murphy":
-            st.markdown('<div class="titulo-slide">Anticípese a los Imprevistos</div>', unsafe_allow_html=True)
+    elif slide == "2. Checklist de Murphy":
+        st.markdown('<div class="titulo-slide">La Ley de Murphy y la Preparación</div>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide">Si algo puede salir mal en la presentación de su proyecto final, saldrá mal. El ingeniero ICI no improvisa, mitiga riesgos.</div><br>', unsafe_allow_html=True)
+        
+        col_a, col_b = st.columns(2)
+        with col_a:
+            st.markdown('<div class="destacado"><b>Validación Pre-Vuelo (Marque para confirmar)</b></div><br>', unsafe_allow_html=True)
+            c1 = st.checkbox("Tengo el archivo en USB, en el correo y en formato PDF (por si se rompen las fuentes).")
+            c2 = st.checkbox("Revisé los adaptadores (HDMI/Tipo-C) y el proyector de la sala.")
+            c3 = st.checkbox("Tengo impreso un resumen ejecutivo por si se corta la energía.")
+            c4 = st.checkbox("Ensayé la presentación con cronómetro.")
             
-            col_a, col_b = st.columns(2)
-            with col_a:
-                st.markdown('<div class="alerta"><b>🛡️ Medidas de Seguridad</b><br><br>'
-                            '• Lleve copias de seguridad en múltiples formatos (USB, Nube).<br>'
-                            '• Verifique la sala con anticipación (iluminación, disposición).<br>'
-                            '• Verifique el equipo: Cables, proyector, lápiz óptico.</div>', unsafe_allow_html=True)
-            with col_b:
-                st.image("https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Preparación técnica previa", use_container_width=True)
-            
-            st.markdown('<br><div class="texto-slide"><i>"De esta manera, podrá evitar los contratiempos que la ley de Murphy puede depararle en su presentación."</i></div>', unsafe_allow_html=True)
+            if c1 and c2 and c3 and c4:
+                st.success("✅ Usted está autorizado para presentar ante el comité.")
+        
+        with col_b:
+            st.image("https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", use_container_width=True)
 
-        elif slide == "Pág 124: Mensaje Final":
-            st.markdown('<div class="titulo-slide">Mensaje Final</div>', unsafe_allow_html=True)
-            
-            # Imagen de gran impacto: Faena minera al atardecer
-            st.image("https://images.unsplash.com/photo-1590486803833-ffc4571713df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", use_container_width=True)
-            
-            st.markdown('<div class="mensaje-fuerza" style="background-color: #1E3A8A; color: white; padding: 20px; text-align: center; font-size: 2.5rem; border-radius: 10px;">'
-                        '¡Muchas Gracias!<br><span style="font-size: 1.5rem;">Presentaciones que Movilizan - Gestión Minera UDP</span></div>', unsafe_allow_html=True)
+    elif slide == "3. Mensaje Final":
+        st.markdown('<div class="titulo-slide" style="text-align: center;">Fin del Paradigma</div>', unsafe_allow_html=True)
+        
+        st.image("https://images.unsplash.com/photo-1590486803833-ffc4571713df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", use_container_width=True)
+        
+        st.markdown("""
+        <div style="background-color: #1E3A8A; color: white; padding: 40px; text-align: center; border-radius: 10px; margin-top: -50px; position: relative; z-index: 10; width: 80%; margin-left: auto; margin-right: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+            <h1 style="color: white; margin-bottom: 10px;">Su proyecto vale lo que vale su capacidad de comunicarlo.</h1>
+            <p style="font-size: 1.5rem;">Cátedra de Gestión del Negocio Minero - UDP</p>
+        </div>
+        """, unsafe_allow_html=True)
 
 # ==============================================================================
 # FIN MÓDULO 04
