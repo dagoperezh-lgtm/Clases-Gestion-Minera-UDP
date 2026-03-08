@@ -395,7 +395,7 @@ elif modulo == "03. Data Storytelling y El Mensaje":
 # ==============================================================================
 elif modulo == "04. Puesta en Escena y Contingencias":
     st.write("### Navegación Dinámica")
-    slide = st.radio("Seleccione la Diapositiva:", ["1. Preguntas Difíciles", "2. Checklist de Murphy", "3. Mensaje Final"], horizontal=True, label_visibility="collapsed")
+    slide = st.radio("Seleccione la Diapositiva:", ["1. Preguntas Difíciles", "2. Checklist de Murphy", "3. Regla de Oro", "4. Mensaje Final"], horizontal=True, label_visibility="collapsed")
     
     st.markdown("<br>", unsafe_allow_html=True)
     
@@ -405,48 +405,53 @@ elif modulo == "04. Puesta en Escena y Contingencias":
         
         col1, col2 = st.columns([1, 1.2])
         with col1:
-            st.image("https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="El momento de la verdad", use_container_width=True)
+            st.image("https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="El momento de la verdad en el Directorio", use_container_width=True)
         
         with col2:
             with st.expander("🚨 Escenario 1: Le hacen una pregunta que NO sabe (y no debería saber)"):
-                st.error("**Estrategia: Honestidad Brutal.**")
-                st.write("Nunca invente un dato frente a un comité. Diga: *'Esa variable escapa al alcance de este modelo, pero es un punto crítico. Lo levantaré con el equipo y le enviaré el informe mañana a primera hora.'*")
+                st.markdown('<div class="destacado-corp" style="border-left-color: #DC2626;"><b>Estrategia: Honestidad Brutal.</b><br>Nunca invente un dato frente a un comité. Diga: <i>"Esa variable escapa al alcance de este modelo actual, pero es un punto crítico. Lo levantaré con el equipo y le enviaré el informe mañana a primera hora."</i></div>', unsafe_allow_html=True)
             
             with st.expander("⚠️ Escenario 2: Le hacen una pregunta que SÍ debería saber, pero olvidó"):
-                st.warning("**Estrategia: Ganar Tiempo o Derivar.**")
-                st.write("1. **Diferir:** *'Ese es un punto excelente que se cruza con la lámina de CAPEX que veremos en 3 minutos. Lo abordamos ahí.'*\n2. **Rebotar a la audiencia:** Si hay un experto en la sala, valídelo: *'Gerente Pérez, con su experiencia en la planta antigua, ¿cómo veíamos este indicador?'*")
+                st.markdown('<div class="destacado-corp" style="border-left-color: #F59E0B;"><b>Estrategia: Ganar Tiempo o Derivar.</b><br>1. <b>Diferir:</b> <i>"Ese es un punto excelente que se cruza con la lámina de CAPEX que veremos en 3 minutos. Lo abordamos ahí."</i><br>2. <b>Rebotar a la audiencia:</b> Si hay un experto en la sala, valídelo: <i>"Gerente Pérez, con su experiencia en la planta, ¿cómo veíamos este indicador?"</i></div>', unsafe_allow_html=True)
             
             with st.expander("🛡️ Escenario 3: Le hacen una pregunta hostil o fuera de contexto"):
-                st.success("**Estrategia: El Puente.**")
-                st.write("No confronte. Reconozca y redirija a su mensaje central: *'Entiendo su preocupación por el costo del año pasado, y precisamente por eso el modelo que propongo hoy asegura que no repitamos esa desviación.'*")
+                st.markdown('<div class="destacado-corp" style="border-left-color: #10B981;"><b>Estrategia: El Puente.</b><br>No confronte. Reconozca y redirija a su mensaje central: <i>"Entiendo su preocupación por el costo del año pasado, y precisamente por eso el modelo que propongo hoy asegura que no repitamos esa desviación."</i></div>', unsafe_allow_html=True)
 
     elif slide == "2. Checklist de Murphy":
         st.markdown('<div class="titulo-slide">La Ley de Murphy y la Preparación</div>', unsafe_allow_html=True)
-        st.markdown('<div class="texto-slide">Si algo puede salir mal en la presentación de su proyecto final, saldrá mal. El ingeniero ICI no improvisa, mitiga riesgos.</div><br>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide">Si algo puede salir mal en la presentación de su proyecto, saldrá mal. El ingeniero ICI no improvisa, mitiga riesgos.</div><br>', unsafe_allow_html=True)
         
         col_a, col_b = st.columns(2)
         with col_a:
-            st.markdown('<div class="destacado"><b>Validación Pre-Vuelo (Marque para confirmar)</b></div><br>', unsafe_allow_html=True)
-            c1 = st.checkbox("Tengo el archivo en USB, en el correo y en formato PDF (por si se rompen las fuentes).")
-            c2 = st.checkbox("Revisé los adaptadores (HDMI/Tipo-C) y el proyector de la sala.")
-            c3 = st.checkbox("Tengo impreso un resumen ejecutivo por si se corta la energía.")
-            c4 = st.checkbox("Ensayé la presentación con cronómetro.")
+            st.markdown('<div class="destacado-corp"><b>Validación Pre-Vuelo (Marque para confirmar)</b></div><br>', unsafe_allow_html=True)
+            c1 = st.checkbox("Tengo el archivo en USB, en la nube y en formato PDF (para evitar desconfiguración de fuentes).")
+            c2 = st.checkbox("Llegué antes para revisar los adaptadores (HDMI/Tipo-C) y probar el proyector de la sala.")
+            c3 = st.checkbox("Tengo impreso un resumen ejecutivo (Handout) por si ocurre un corte de energía total.")
+            c4 = st.checkbox("Ensayé la presentación con cronómetro para respetar el tiempo de los ejecutivos.")
             
             if c1 and c2 and c3 and c4:
-                st.success("✅ Usted está autorizado para presentar ante el comité.")
+                st.success("✅ Protocolos completos. Usted está autorizado para presentar ante el comité.")
         
         with col_b:
-            st.image("https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", use_container_width=True)
+            st.image("https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Mitigación de riesgos técnicos", use_container_width=True)
 
-    elif slide == "3. Mensaje Final":
+    elif slide == "3. Regla de Oro":
+        st.markdown("""
+        <div class="slide-mensaje">
+            <h1>LA PRESENTACIÓN ES UN GUIÓN DE ACCIÓN</h1>
+            <p>Ordene su presentación como una serie: Enganche al inicio, mantenga la tensión con datos duros, y cierre con un llamado a la acción ineludible.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    elif slide == "4. Mensaje Final":
         st.markdown('<div class="titulo-slide" style="text-align: center;">Fin del Paradigma</div>', unsafe_allow_html=True)
         
         st.image("https://images.unsplash.com/photo-1590486803833-ffc4571713df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", use_container_width=True)
         
         st.markdown("""
-        <div style="background-color: #1E3A8A; color: white; padding: 40px; text-align: center; border-radius: 10px; margin-top: -50px; position: relative; z-index: 10; width: 80%; margin-left: auto; margin-right: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
-            <h1 style="color: white; margin-bottom: 10px;">Su proyecto vale lo que vale su capacidad de comunicarlo.</h1>
-            <p style="font-size: 1.5rem;">Cátedra de Gestión del Negocio Minero - UDP</p>
+        <div class="slide-mensaje" style="margin-top: -80px; position: relative; z-index: 10; width: 85%; margin-left: auto; margin-right: auto; padding: 40px;">
+            <h1 style="font-size: 3.5rem;">SU PROYECTO VALE LO QUE VALE SU CAPACIDAD DE COMUNICARLO.</h1>
+            <p style="color: #00A4E4; font-weight: bold;">Cátedra de Gestión del Negocio Minero - UDP</p>
         </div>
         """, unsafe_allow_html=True)
 
