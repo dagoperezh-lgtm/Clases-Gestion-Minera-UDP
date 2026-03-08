@@ -1,114 +1,154 @@
 import streamlit as st
 
-# Configuración de página
-st.set_page_config(page_title="Gestión del Negocio Minero", page_icon="⛏️", layout="wide")
+# Configuración de la página
+st.set_page_config(page_title="Presentaciones que Movilizan", page_icon="📈", layout="wide")
 
-# Encabezado principal
-st.title("Presentaciones que Movilizan 🚀")
-st.subheader("Gestión del Negocio Minero")
-st.markdown("**Profesor:** Dagoberto Pérez Herrera | *Ingeniería Civil Industrial*")
+# Estilos CSS personalizados para darle un look corporativo
+st.markdown("""
+    <style>
+    .main-header {font-size: 2.5rem; color: #1E3A8A; font-weight: 700;}
+    .sub-header {font-size: 1.5rem; color: #DC2626; font-weight: 500;}
+    .metric-card {background-color: #F3F4F6; padding: 20px; border-radius: 10px; text-align: center; border-left: 5px solid #1E3A8A;}
+    </style>
+""", unsafe_allow_html=True)
+
+# Encabezado formal
+st.markdown('<p class="main-header">Gestión del Negocio Minero: Presentaciones que Movilizan 🚀</p>', unsafe_allow_html=True)
+st.markdown('<p class="sub-header">Profesor: Dagoberto Pérez Herrera | Ingeniería Civil Industrial UDP</p>', unsafe_allow_html=True)
 st.divider()
 
-# Navegación por pestañas (tabs)
-tab1, tab2, tab3, tab4 = st.tabs([
-    "🎯 Bloque 1: El Propósito", 
-    "📊 Bloque 2: Estructura", 
-    "🎨 Bloque 3: Diseño Visual", 
-    "🎭 Bloque 4: Puesta en Escena"
-])
+# Navegación Lateral Interactiva
+st.sidebar.header("Índice de la Clase")
+menu = st.sidebar.radio(
+    "Selecciona un Capítulo:",
+    ["1. El Problema del Esfuerzo", 
+     "2. Los 7 Pasos de Preparación", 
+     "3. Títulos vs Mensajes (Interactividad)", 
+     "4. De Números a Símbolos",
+     "5. La Puesta en Escena"]
+)
 
-with tab1:
-    st.header("La idea no basta, hay que saber venderla")
+if menu == "1. El Problema del Esfuerzo":
+    st.header("⚖️ El Equilibrio del Éxito: 50% Técnica / 50% Arte")
+    st.markdown("Normalmente, el ingeniero dedica el 100% de su esfuerzo al análisis y olvida el diseño de la presentación hasta el último minuto. **Interactúa con el deslizador para ver el impacto:**")
+    
+    esfuerzo_analisis = st.slider("Porcentaje de esfuerzo dedicado solo al Análisis de Datos:", 0, 100, 95)
+    esfuerzo_presentacion = 100 - esfuerzo_analisis
+    
     col1, col2 = st.columns(2)
     with col1:
-        st.info("**50% Técnica:** Tener un análisis técnico y financiero impecable.")
+        st.metric(label="📊 Análisis (La Técnica)", value=f"{esfuerzo_analisis}%")
     with col2:
-        st.success("**50% Arte:** Saber vender esa idea a los tomadores de decisiones.")
-    
-    st.write("> *El objetivo final de una presentación técnica no es informar, es que la audiencia compre tu idea y tome acción.*")
-    
-    st.markdown("""
-    ### El Error Común en la Ingeniería
-    Normalmente dedicamos el 95% del tiempo al **análisis de datos** y dejamos la presentación para el final.
-    Esto genera:
-    - Láminas sobrecargadas.
-    - Mensajes inerciales.
-    - Falta de foco direccional.
-    
-    **La Solución:** Trabajar el diseño narrativo de la presentación en estricto paralelo con el análisis de los datos.
-    """)
+        st.metric(label="🎨 Presentación (El Arte)", value=f"{esfuerzo_presentacion}%", delta="-Peligro de no movilizar" if esfuerzo_presentacion < 40 else "Balance Ideal")
+        
+    if esfuerzo_presentacion < 40:
+        st.error("⚠️ Cuidado: Las personas no solo compran 'Ideas Buenas'. Si no inviertes al menos 40% del esfuerzo en saber vender la idea, la presentación será inerte y sobrecargada.")
+    else:
+        st.success("✅ ¡Excelente balance! Trabajar en la presentación en forma simultánea al análisis permite priorizar ideas y no perder tiempo.")
 
-with tab2:
-    st.header("Estructura y Data Storytelling")
+elif menu == "2. Los 7 Pasos de Preparación":
+    st.header("🏗️ Estructura: Los 7 Pasos de la Preparación Ágil")
+    st.markdown("Seguir esta secuencia ayuda a evitar el *análisis parálisis* y a asegurar la entrega del mensaje clave.")
     
-    st.markdown("### 🏗️ Los 7 Pasos de la Preparación")
-    st.write("**Audiencia** ➔ **Adaptación** ➔ **Mensaje** ➔ **Tiempo** ➔ **Ideas Ancla** ➔ **Estructura** ➔ **Contenidos**")
+    pasos = {
+        "1. Audiencia": "Identifique a quién le habla y defina qué quiere que decidan.",
+        "2. Adaptación": "Ajuste el tiempo y la estructura según el conocimiento previo de la sala.",
+        "3. Mensaje": "Defina la idea central con la que la audiencia debe quedarse.",
+        "4. Tiempo": "Calcule, ajuste al tiempo disponible y ensaye rigurosamente.",
+        "5. Ideas Ancla": "Desarrolle un guion gráfico para enlazar los temas.",
+        "6. Estructura": "Trace la Introducción -> Desarrollo (Casos) -> Conclusión.",
+        "7. Contenidos visuales": "Recién aquí se diagrama la diapositiva en el software."
+    }
     
-    st.divider()
+    for paso, desc in pasos.items():
+        with st.expander(paso):
+            st.write(desc)
+
+elif menu == "3. Títulos vs Mensajes (Interactividad)":
+    st.header("📈 Data Storytelling: El gráfico en torno al mensaje")
+    st.markdown("La mayoría de las presentaciones fallan porque usan títulos inertes. **Interactúa con el botón abajo para ver el cambio de paradigma en la gestión de un presupuesto:**")
     
-    st.markdown("### ❌ Títulos vs ✅ Mensajes")
+    # Switch interactivo
+    transformar = st.toggle("✨ Transformar Lámina (De Informativa a Movilizadora)")
+    
+    # Datos simulados basados en tu ppt (Desviación de presupuesto)
+    datos_grafico = {
+        "Contractors": 5000,
+        "Expenses": 2000,
+        "Power": 1000,
+        "Labor": 1000,
+        "Spare Parts": 2000,
+        "Maintenance": 26303 # La anomalía destacada
+    }
+    
+    if not transformar:
+        st.subheader("Título inerte: Presupuesto de Operaciones Q1")
+        st.write("Tabla de desviaciones de gasto por naturaleza (kUSD):")
+        st.table({"Departamento": list(datos_grafico.keys()), "Desviación (kUSD)": list(datos_grafico.values())})
+        st.info("❌ Resultado: La audiencia se aburre y se agota buscando dónde está el problema real entre tantos números.")
+    else:
+        st.subheader("🚨 Mensaje: El Presupuesto está Restringido, necesitamos gestionar el Sobregasto en Mantenimiento")
+        col1, col2 = st.columns([1, 2])
+        with col1:
+            st.metric(label="Sobregasto Mantenimiento", value="86.303 kUSD", delta="26.303 kUSD sobre lo esperado", delta_color="inverse")
+        
+        with col2:
+            st.markdown("**Atención Dirigida (Contraste):**")
+            st.bar_chart(datos_grafico, color="#DC2626") 
+        st.success("✅ Resultado: El gráfico de barras demuestra importancia y el mensaje dirige la acción directamente hacia la anomalía.")
+
+elif menu == "4. De Números a Símbolos":
+    st.header("🚦 Minimalismo Cognitivo: Tablas vs Scorecards")
+    st.markdown("Cuando se utilice una tabla (ej. Disponibilidad de Pozos o Cumplimiento de Programas), es preferible llenarla con símbolos para evitar la 'sopa de números'.")
+    
+    mostrar_simbolos = st.radio("Compara visualmente:", ["Sopa de Números (Antiguo)", "Semáforos / Scorecard (Nuevo)"])
+    
+    if mostrar_simbolos == "Sopa de Números (Antiguo)":
+        st.markdown("### Cumplimiento del Programa DCS (%)")
+        st.code("""
+        Jul-23: 83.80% | 100.0% | 92.4%
+        Ago-23: 95.00% | 100.0% | 95.0%
+        Sep-23: 81.00% | 100.0% | 90.0%
+        Oct-23: 95.00% | 100.0% | 95.0%
+        """)
+    else:
+        st.markdown("### Cumplimiento del Programa DCS (Scorecard)")
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.markdown("<div class='metric-card'>Jul-23<br><h1 style='margin:0;'>🔴</h1></div>", unsafe_allow_html=True)
+        with col2:
+            st.markdown("<div class='metric-card'>Ago-23<br><h1 style='margin:0;'>🟢</h1></div>", unsafe_allow_html=True)
+        with col3:
+            st.markdown("<div class='metric-card'>Sep-23<br><h1 style='margin:0;'>🟡</h1></div>", unsafe_allow_html=True)
+        with col4:
+            st.markdown("<div class='metric-card'>Oct-23<br><h1 style='margin:0;'>🟢</h1></div>", unsafe_allow_html=True)
+        st.success("Destaca visualmente solo la anomalía. El resto de la operación normal pasa a un plano secundario.")
+
+elif menu == "5. La Puesta en Escena":
+    st.header("🎭 Exponer es Exponerse: Los 5 Elementos Esenciales")
+    st.markdown("La efectividad del orador depende de dominar estos pilares físicos y estratégicos:")
+    
     colA, colB = st.columns(2)
     with colA:
-        st.error("**Paradigma Antiguo (Informativo)**\n\n*Título:* Presupuesto de Operaciones Q1\n\n*Dato:* Gasto de 200 kUSD, desviación 25%.")
+        st.markdown("### 🗣️ Expresión Oral")
+        st.markdown("""
+        * **1. Manejo del Miedo:** La contracción corporal es la imagen del miedo. Se combate con respiración y postura abierta (¡Como los superhéroes!).
+        * **2. Postura y Gestos:** Mantén una postura erguida pero relajada. Gestos con palmas abiertas impulsan a la acción.
+        * **3. Desplazamiento:** Muévete con propósito, no te quedes anclado ni camines erráticamente.
+        * **4. Control del Lenguaje:** Evita la monotonía. El público no puede leer y escuchar a la vez. 
+        * **5. Contacto Visual:** Es clave para la credibilidad. Conecta con las personas.
+        """)
     with colB:
-        st.success("**Paradigma Nuevo (Movilizador)**\n\n*Mensaje:* 🚨 El Presupuesto está Restringido este Año: Necesitamos Gestionar el Sobregasto.")
-        
-    st.markdown("### 🚦 De Números a Símbolos")
-    st.write("Evita la 'sopa de números'. Al presentar ante comités, usa semáforos (🔴 🟡 🟢) para métricas clave, destacando visualmente solo la anomalía.")
-
-with tab3:
-    st.header("Diseño Visual y Minimalismo Cognitivo")
-    
-    col_a, col_b = st.columns(2)
-    
-    with col_a:
-        st.markdown("""
-        ### ⚖️ La Fórmula del Impacto
-        - **60% TÉCNICA (Fondo):** Estructura lógica, calidad y exactitud de las láminas.
-        - **40% ARTE (Forma):** Creatividad, visualización limpia e histrionismo de conexión.
-        
-        ### 🧹 Adiós a las Viñetas
-        - Regla de oro: Una lámina = Un mensaje central.
-        - Usa cuadrículas, íconos limpios y fomenta el "espacio en blanco".
-        - El texto en pantalla debe ser un ancla conceptual, no un teleprompter.
-        """)
-        
-    with col_b:
-        st.markdown("""
-        ### 🎯 Atención Dirigida
-        Utiliza el contraste a tu favor. Mantén colores neutros y utiliza un color intenso **solo en el elemento que presenta la desviación**.
-        
-        ### 📑 Documento vs Presentación
-        Si el directorio necesita los polinomios de evaluación o el detalle operativo, entrégalo como folleto impreso o mediante un código QR. **Jamás lo proyectes.**
-        """)
-
-with tab4:
-    st.header("La Puesta en Escena (Exponer es Exponerse)")
-    
-    st.markdown("### 🗣️ Los 5 Pilares de la Presencia Ejecutiva")
-    st.markdown("""
-    1. **Manejo del Miedo:** Transforma y canaliza la adrenalina como energía escénica.
-    2. **Postura y Gestos:** Mantén una postura abierta y frontal.
-    3. **Desplazamiento:** Muévete por la sala con intención semántica.
-    4. **Control del Lenguaje:** Modula y adapta tu vocabulario a la audiencia.
-    5. **Contacto Visual:** Conecta visualmente con la sala de forma constante.
-    """)
-    
-    st.divider()
-    
-    col_x, col_y = st.columns(2)
-    with col_x:
-        st.warning("""
-        **🛡️ Estrategia ante Preguntas Difíciles**
-        - **Honestidad Técnica:** Si un dato escapa al alcance, decláralo de frente.
-        - **Diferimiento Estratégico:** *"Ese nivel de detalle técnico lo evaluaremos a fondo en la próxima sesión..."*.
-        - **Redirección:** Abre la pregunta a la experiencia de otros especialistas presentes.
-        """)
-        
-    with col_y:
-        st.error("""
-        **💥 Imprevistos y Ley de Murphy**
-        - **Respaldo Múltiple:** Lleva tus copias en pendrive y en la nube.
-        - **Inspección de Terreno:** Verifica la iluminación y conectividad de la sala.
-        - **Prueba de Equipos:** Revisa el proyector y la batería del pasador de diapositivas.
-        """)
+        st.markdown("### 🛡️ Estrategias Directivas")
+        with st.expander("Manejo de Preguntas Difíciles"):
+            st.write("""
+            - **Honestidad:** Si no sabe o no corresponde a la presentación, hágalo saber de frente.
+            - **Diferir:** *"Esa es una pregunta muy interesante... Justo en la próxima sesión lo veremos..."* (¡Y prepárelo!).
+            - **Redirigir:** Preguntar a la audiencia o contestar enfocándose en otro ángulo.
+            """)
+        with st.expander("Anticiparse a la Ley de Murphy"):
+            st.write("""
+            - **Respaldos:** Lleve copias en múltiples formatos (USB, Nube).
+            - **Terreno:** Llegue antes, verifique la iluminación y la ubicación de la pantalla.
+            - **Hardware:** Compruebe la longitud de los cables, el funcionamiento del proyector y el lápiz óptico.
+            """)
