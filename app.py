@@ -21,9 +21,9 @@ st.sidebar.info("💡 Tip: Haz clic en la 'X' para ocultar esta barra. Para volv
 modulo = st.sidebar.radio("Seleccione el Módulo:", [
     "00. Introducción y Reglas",
     "01. El Paradigma del Esfuerzo",
-    "02. Los 7 Pasos de Preparación"
+    "02. Los 7 Pasos de Preparación",
+    "03. Data Storytelling y El Mensaje"
 ])
-
 # ==============================================================================
 # INICIO MÓDULO 00: INTRODUCCIÓN Y REGLAS
 # ==============================================================================
@@ -138,4 +138,91 @@ elif modulo == "02. Los 7 Pasos de Preparación":
             st.markdown('<div class="texto-slide">Trabajar en el análisis y la presentación en forma simultánea, aplicando los 7 pasos:<br><br>Definir objetivo, adecuar a la audiencia, definir el mensaje clave, identificar el tiempo adecuado, hacer un diagrama, definir la estructura de láminas y trabajar en el contenido.<br><br><i>Enuncie un problema e incluya introducciones y resúmenes a lo largo de la presentación.</i></div>', unsafe_allow_html=True)
 # ==============================================================================
 # FIN MÓDULO 02
+# ==============================================================================
+
+# ==============================================================================
+# INICIO MÓDULO 03: DATA STORYTELLING Y EL MENSAJE
+# ==============================================================================
+elif modulo == "03. Data Storytelling y El Mensaje":
+    st.write("### Navegación de Diapositivas")
+    slide = st.radio("Seleccione la Diapositiva:", ["Pág 35: Títulos vs Mensajes", "Pág 40: Selección de Gráficos", "Pág 45: Tablas vs Scorecards"], horizontal=True, label_visibility="collapsed")
+    
+    pantalla = st.container(height=650, border=True)
+    import time # Importamos la librería de tiempo para las animaciones
+    import pandas as pd
+    
+    with pantalla:
+        if slide == "Pág 35: Títulos vs Mensajes":
+            st.markdown('<div class="titulo-slide">El Título informa. El Mensaje DIRIGE.</div>', unsafe_allow_html=True)
+            
+            col1, col2 = st.columns([1, 1.2])
+            with col1:
+                # Imagen de contexto: Ingenieros analizando datos en faena
+                st.image("https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", use_container_width=True)
+            
+            with col2:
+                # Animación sobria: Cascada de texto
+                placeholder = st.empty()
+                texto = ""
+                
+                # Aparece el primer punto
+                texto += '<div class="alerta"><b>❌ Título Inerte:</b> "Ejecución Presupuestaria de Mantenimiento Q1".<br><span style="font-size: 1.2rem;">(La audiencia debe adivinar al ver la pantalla si los números son buenos o malos).</span></div><br>'
+                placeholder.markdown(texto, unsafe_allow_html=True)
+                
+                # Pausa de 1.5 segundos
+                time.sleep(1.5) 
+                
+                # Aparece el segundo punto
+                texto += '<div class="destacado"><b>✅ Mensaje Directivo:</b> "🚨 Sobregasto crítico en Mantenimiento: Necesitamos inyectar 26 kUSD para asegurar la disponibilidad de la flota."</div><br>'
+                placeholder.markdown(texto, unsafe_allow_html=True)
+                
+                # Pausa final
+                time.sleep(1.5)
+                
+                # Aparece el último punto
+                texto += '<div class="texto-slide">El gráfico que acompañe esta lámina debe actuar <b>únicamente</b> como evidencia visual de esta afirmación.</div>'
+                placeholder.markdown(texto, unsafe_allow_html=True)
+
+        elif slide == "Pág 40: Selección de Gráficos":
+            st.markdown('<div class="titulo-slide">Selección Estratégica y Atención Dirigida</div>', unsafe_allow_html=True)
+            st.markdown('<div class="texto-slide">No todos los datos se visualizan igual. En minería, el tiempo es escaso y el gráfico debe servir al mensaje central.</div>', unsafe_allow_html=True)
+            
+            # Gráfico de barras nativo de Streamlit comparando Presupuesto vs Real
+            datos_costos = pd.DataFrame({
+                "Área Operativa": ["Extracción", "Chancado", "Molienda", "Flotación", "Mantenimiento"],
+                "Presupuesto (kUSD)": [150, 120, 200, 180, 250],
+                "Costo Real (kUSD)": [145, 115, 195, 180, 310] # Anomalía intencional en mantenimiento
+            })
+            
+            st.bar_chart(datos_costos.set_index("Área Operativa"), color=["#1E3A8A", "#DC2626"])
+            
+            st.markdown('<div class="destacado">💡 <b>Contraste Visual:</b> Note cómo el sobrecosto real de Mantenimiento (línea roja) rompe la tendencia esperada. En su presentación directiva, la anomalía es el único dato que debe tener peso visual.</div>', unsafe_allow_html=True)
+
+        elif slide == "Pág 45: Tablas vs Scorecards":
+            st.markdown('<div class="titulo-slide">Minimalismo: De la "Sopa de Números" a los Scorecards</div>', unsafe_allow_html=True)
+            
+            col_a, col_b = st.columns([1, 1.5])
+            with col_a:
+                # Imagen de contexto: Centro de control integrado minero (CIO)
+                st.image("https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", use_container_width=True)
+            
+            with col_b:
+                st.markdown('<div class="texto-slide">Cuando proyecte el estado de múltiples equipos, evite tablas de Excel densas. Use semáforos para acelerar la toma de decisiones.</div><br>', unsafe_allow_html=True)
+                
+                # Animación sobria de Scorecard
+                ph = st.empty()
+                contenido = ""
+                
+                contenido += '<div style="font-size: 2rem;">Molino SAG 1: 🟢 <b>Operativo</b> (100% Cumplimiento)</div><br>'
+                ph.markdown(contenido, unsafe_allow_html=True)
+                time.sleep(1)
+                
+                contenido += '<div style="font-size: 2rem;">Chancador Primario: 🟡 <b>Alerta Temprana</b> (Revisar desgaste)</div><br>'
+                ph.markdown(contenido, unsafe_allow_html=True)
+                time.sleep(1)
+                
+                contenido += '<div style="font-size: 2rem; background-color: #FEF2F2; padding: 10px; border-left: 5px solid #DC2626;">Correa Transportadora C1: 🔴 <b>Detención Crítica</b></div>'
+                ph.markdown(contenido, unsafe_allow_html=True)
+# ==============================================================================
+# FIN MÓDULO 03
 # ==============================================================================
