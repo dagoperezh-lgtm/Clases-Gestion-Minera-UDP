@@ -5,20 +5,18 @@ import streamlit as st
 # ==============================================================================
 st.set_page_config(page_title="Gestión Minera UDP", layout="wide", initial_sidebar_state="expanded")
 
-# CSS Ajustado para enmarcar el texto y evitar el scrolling desordenado
+# CSS Ajustado para enmarcar el texto y recuperar el botón del menú lateral
 st.markdown("""
     <style>
     .titulo-slide { font-size: 3rem; color: #1E3A8A; font-weight: bold; margin-bottom: 15px; line-height: 1.2;}
     .texto-slide { font-size: 1.6rem; color: #333333; line-height: 1.5;}
     .destacado { background-color: #F3F4F6; border-left: 8px solid #DC2626; padding: 20px; font-size: 1.6rem;}
     .alerta { background-color: #FEF2F2; border-left: 8px solid #991B1B; padding: 20px; font-size: 1.6rem; color: #991B1B;}
-    /* Ocultar barra superior de Streamlit para ganar espacio de pantalla */
-    header {visibility: hidden;}
     </style>
 """, unsafe_allow_html=True)
 
 st.sidebar.title("Índice de la Cátedra")
-st.sidebar.info("💡 Tip: Haz clic en la 'X' o '<' en la esquina superior izquierda para ocultar esta barra y ganar pantalla.")
+st.sidebar.info("💡 Tip: Haz clic en la 'X' para ocultar esta barra. Para volver a verla, haz clic en el pequeño símbolo '>' en la esquina superior izquierda.")
 
 modulo = st.sidebar.radio("Seleccione el Módulo:", [
     "00. Introducción y Reglas",
