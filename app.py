@@ -89,44 +89,60 @@ if modulo == "00. Introducción y Reglas":
 # ==============================================================================
 
 # ==============================================================================
-# INICIO MÓDULO 01: EL PARADIGMA DEL ESFUERZO
+# INICIO MÓDULO 01: LO QUE NO SE DEBE HACER (EL PROBLEMA)
 # ==============================================================================
 elif modulo == "01. El Paradigma del Esfuerzo":
-    st.write("### Navegación de Diapositivas")
-    slide = st.radio("Seleccione la Diapositiva:", ["Pág 5: El Propósito", "Pág 6: Secuencia Tradicional", "Pág 7: Equilibrio de Éxito"], horizontal=True, label_visibility="collapsed")
+    st.write("### Navegación Dinámica")
+    slide = st.radio("Seleccione la Diapositiva:", ["1. El Salón de la Infamia", "2. La Sopa de Números", "3. La Regla de Oro"], horizontal=True, label_visibility="collapsed")
     
-    pantalla = st.container(height=650, border=True)
+    st.markdown("<br>", unsafe_allow_html=True)
     
-    with pantalla:
-        if slide == "Pág 5: El Propósito":
-            col1, col2 = st.columns([1.5, 1])
-            with col1:
-                st.markdown('<div class="titulo-slide">La Idea no basta: El Propósito de la Presentación</div>', unsafe_allow_html=True)
-                st.markdown('<div class="texto-slide">En la industria minera, los proyectos no se aprueban automáticamente por el mero hecho de tener un análisis matemático impecable. El directorio requiere entender la implicancia directiva de esos números.<br><br>El objetivo final de una presentación técnica ante un comité ejecutivo <b>no es informar</b>, es que la audiencia compre su idea y se movilice a tomar acción.</div>', unsafe_allow_html=True)
-            with col2:
-                st.image("https://images.unsplash.com/photo-1507537362848-9c7e70b7b5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", use_container_width=True)
+    if slide == "1. El Salón de la Infamia":
+        st.markdown('<div class="titulo-slide">Lo que NO se debe hacer: Contraste y Saturación</div>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide">Las primeras láminas de su presentación no pueden ser un muro de texto o usar colores que impidan la lectura. Observe estos errores clásicos extraídos de presentaciones reales de ingeniería:</div><br>', unsafe_allow_html=True)
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown('<div class="bad-slide" style="background-color: #000080; color: #000000; font-weight: bold; text-align: center;">❌ ERROR 1: PÉSIMO CONTRASTE<br><br>Letra oscura sobre fondo oscuro. La audiencia se rinde a los 5 segundos intentando descifrar esto.</div>', unsafe_allow_html=True)
+        with col2:
+            st.markdown('<div class="bad-slide" style="background-color: #FFFF00; color: #FFFFFF; font-weight: bold; text-align: center;">❌ ERROR 2: COLORES CHILLONES<br><br>Letra blanca sobre fondo amarillo brillante. Destruye la vista del directorio e impide la concentración.</div>', unsafe_allow_html=True)
+            
+        st.markdown('<br><div class="destacado-corp">✅ <b>EL ESTÁNDAR CORPORATIVO:</b> Use siempre fondos claros (blanco puro o gris muy suave) con letras oscuras (azul corporativo, gris oscuro o negro) para maximizar la legibilidad en cualquier proyector.</div>', unsafe_allow_html=True)
 
-        elif slide == "Pág 6: Secuencia Tradicional":
-            st.markdown('<div class="titulo-slide">El Error Endémico en la Ingeniería</div>', unsafe_allow_html=True)
-            st.markdown('<div class="texto-slide">El ingeniero civil industrial suele dedicar la inmensa mayoría de su tiempo (95%) a procesar el modelo de datos, dejando el diseño del mensaje para el final.</div><br>', unsafe_allow_html=True)
-            col_x, col_y = st.columns(2)
-            with col_x:
-                st.markdown('<div class="alerta"><b>Secuencia Tradicional (Lleva al fracaso)</b><br>1. Analizar exhaustivamente los datos.<br>2. Extraer todos los resultados.<br>3. Pegar tablas en PowerPoint el día anterior.<br>4. Exponer datos sin dirección.</div>', unsafe_allow_html=True)
-            with col_y:
-                st.markdown('<div class="destacado"><b>Secuencia Directiva (Genera Acción)</b><br>1. Definir el mensaje y la audiencia.<br>2. Diseñar la estructura narrativa ("Storyboarding").<br>3. Levantar <b>solo</b> los datos que sustentan el mensaje.<br>4. Crear apoyos visuales de impacto.</div>', unsafe_allow_html=True)
+    elif slide == "2. La Sopa de Números":
+        st.markdown('<div class="titulo-slide">Lo que NO se debe hacer: Tablas sin procesar</div>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide">Pegar una planilla de Excel directamente en la lámina es transferirle su trabajo de análisis a la audiencia.</div><br>', unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class="bad-slide" style="text-align: center;">
+            <h4 style="color: #666; margin-bottom: 5px;">❌ ERROR 3: LA TABLA BRUTA</h4>
+            <p style="font-size: 1.2rem; margin-top: 0;">(Imagine proyectar esto a 5 metros de distancia en una sala de reuniones)</p>
+            <table style="width:80%; margin: 0 auto; font-size: 0.8rem; border: 1px solid #999; text-align: center; background-color: white; color: black;">
+                <tr style="background-color: #ccc;"><th>ID_Eq</th><th>Var_X1</th><th>Var_X2</th><th>Temp</th><th>Presión</th><th>Flujo</th><th>Estado</th><th>Costo</th></tr>
+                <tr><td>001</td><td>45.2</td><td>0.01</td><td>99°C</td><td>1.2</td><td>123</td><td>OK</td><td>$12k</td></tr>
+                <tr><td>002</td><td>44.8</td><td>0.02</td><td>98°C</td><td>1.1</td><td>124</td><td>OK</td><td>$11k</td></tr>
+                <tr><td>003</td><td>46.1</td><td>0.01</td><td>97°C</td><td>1.3</td><td>121</td><td>OK</td><td>$13k</td></tr>
+                <tr><td>004</td><td>49.9</td><td>0.05</td><td>105°C</td><td>1.8</td><td>90</td><td>Falla</td><td>$45k</td></tr>
+                <tr><td>005</td><td>45.0</td><td>0.01</td><td>98°C</td><td>1.2</td><td>122</td><td>OK</td><td>$12k</td></tr>
+            </table>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown('<br><div class="destacado-corp">✅ <b>EL ESTÁNDAR CORPORATIVO:</b> Si un número no apoya directamente su mensaje central, elimínelo de la pantalla. Use gráficos de tendencia o destaque únicamente la anomalía (Ej: El Equipo 004).</div>', unsafe_allow_html=True)
 
-        elif slide == "Pág 7: Equilibrio de Éxito":
-            st.markdown('<div class="titulo-slide">La Fórmula del Impacto: 50/50</div>', unsafe_allow_html=True)
-            st.markdown('<div class="texto-slide">Para lograr que un proyecto se ejecute, la presentación requiere balancear dos mundos con la misma rigurosidad:</div><br>', unsafe_allow_html=True)
-            col_a, col_b = st.columns(2)
-            with col_a:
-                st.markdown('<div style="background-color:#1E3A8A; padding:30px; border-radius:10px; color:white; text-align:center;"><h1 style="font-size:4rem; color:white; margin:0;">50% TÉCNICA</h1><p style="font-size:1.6rem;">La calidad del dato, la rigurosidad del análisis y la estructura lógica de los argumentos.</p></div>', unsafe_allow_html=True)
-            with col_b:
-                st.markdown('<div style="background-color:#DC2626; padding:30px; border-radius:10px; color:white; text-align:center;"><h1 style="font-size:4rem; color:white; margin:0;">50% ARTE</h1><p style="font-size:1.6rem;">El diseño visual limpio, la empatía con la audiencia y la histrionismo en la puesta en escena.</p></div>', unsafe_allow_html=True)
+    elif slide == "3. La Regla de Oro":
+        # Aquí inyectamos el componente de impacto masivo
+        st.markdown("""
+        <div class="slide-mensaje">
+            <h1>USE MENSAJES EN LUGAR DE TÍTULOS</h1>
+            <p>El título solo informa. El mensaje le dice a la audiencia qué decisión debe tomar.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown('<div class="texto-slide" style="text-align: center;">Nunca deje que la audiencia saque sus propias conclusiones mirando sus datos.<br><b>Es su deber como ingeniero dirigir el análisis.</b></div>', unsafe_allow_html=True)
 # ==============================================================================
 # FIN MÓDULO 01
 # ==============================================================================
-
 # ==============================================================================
 # INICIO MÓDULO 02: LA AUDIENCIA ES EL CENTRO
 # ==============================================================================
