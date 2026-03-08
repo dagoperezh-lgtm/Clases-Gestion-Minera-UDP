@@ -1,120 +1,84 @@
 import streamlit as st
 
-# Configuración de página
-st.set_page_config(page_title="Gestión Minera | Presentaciones Efectivas", page_icon="⛏️", layout="wide")
+# Configuración en modo "Pantalla Completa/Proyector"
+st.set_page_config(page_title="Gestión Minera | Presentaciones Efectivas", page_icon="⛏️", layout="wide", initial_sidebar_state="collapsed")
 
-# Estilos CSS para impacto visual en la audiencia (no para el presentador)
+# Inyección de CSS para forzar fuentes gigantes y aspecto de proyector
 st.markdown("""
     <style>
-    .mensaje-fuerza {background-color: #1E3A8A; color: white; padding: 30px; border-radius: 10px; text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 20px;}
-    .llamado-accion {background-color: #DC2626; color: white; padding: 20px; border-radius: 8px; font-size: 1.5rem; font-weight: bold; border-left: 10px solid #991B1B;}
-    .concepto-clave {font-size: 1.3rem; color: #374151; line-height: 1.8;}
+    .titulo-gigante { font-size: 5rem !important; font-weight: 900; color: #1E3A8A; line-height: 1.1; margin-bottom: 20px;}
+    .mensaje-impacto { font-size: 3rem !important; font-weight: 700; color: #DC2626; border-left: 15px solid #DC2626; padding-left: 30px; margin-top: 30px; margin-bottom: 30px;}
+    .texto-proyector { font-size: 2.2rem !important; color: #374151; line-height: 1.4; }
+    .stApp { background-color: #ffffff; }
+    /* Ocultar elementos por defecto de Streamlit para limpiar la pantalla */
+    header {visibility: hidden;}
+    footer {visibility: hidden;}
     </style>
 """, unsafe_allow_html=True)
 
-# Barra lateral de navegación profunda
-st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Logo_UDP.svg/1024px-Logo_UDP.svg.png", width=150)
-st.sidebar.title("Índice de la Cátedra (3 hrs)")
-seccion = st.sidebar.radio("Navegación:", [
-    "0. Intro y Reglas del Curso",
-    "1. El Paradigma del Esfuerzo",
-    "2. La Estructura (Los 7 Pasos)",
-    "3. El Corazón: El Mensaje"
+# Menú lateral discreto (solo para ti, para cambiar la slide)
+st.sidebar.title("Control del Profesor")
+slide = st.sidebar.radio("Navegación de Diapositivas:", [
+    "1. Portada",
+    "2. El Fracaso del Esfuerzo",
+    "3. El Paradigma 50/50",
+    "4. Caso Real: Radomiro Tomic",
+    "5. El Mensaje Directivo"
 ])
 
-if seccion == "0. Intro y Reglas del Curso":
-    st.markdown('<div class="mensaje-fuerza">Gestión del Negocio Minero<br><span style="font-size: 1.2rem; font-weight: normal;">Profesor: Dagoberto Pérez Herrera | Ingeniería Civil Industrial</span></div>', unsafe_allow_html=True)
-    
-    col1, col2 = st.columns([2, 1])
+if slide == "1. Portada":
+    col1, col2 = st.columns([1.2, 1])
     with col1:
-        st.header("🎯 Objetivo de la Gestión de la Industria Minera")
-        st.markdown('<p class="concepto-clave">Proporcionar las herramientas necesarias para encarar la incorporación profesional a la industria minera. Desarrollaremos conocimientos generales, lenguaje técnico y cultura minera que faciliten la comprensión de los procesos operacionales y la gestión de recursos (mineros, hídricos, energéticos y humanos).</p>', unsafe_allow_html=True)
-    
+        st.markdown('<br><br><br><p class="titulo-gigante">Presentaciones<br>que Movilizan</p>', unsafe_allow_html=True)
+        st.markdown('<p class="texto-proyector" style="color:#6B7280;">Gestión del Negocio Minero<br><b>Ingeniería Civil Industrial</b></p>', unsafe_allow_html=True)
     with col2:
-        st.header("⚖️ Polinomio de Evaluación")
-        st.info("La Nota Final (NF) se calcula mediante la siguiente estructura:")
-        # Uso estricto de LaTeX para la fórmula matemática del curso
-        st.latex(r"NF = PM \cdot 0.3 + AP \cdot 0.1 + PS \cdot 0.25 + PC \cdot 0.1 + EX \cdot 0.25")
-        
-        st.markdown("""
-        * **PM:** Proyecto de Mejora (30%)
-        * **AP:** Avance Proyecto de Mejora (10%)
-        * **PS:** Prueba Solemne (25%)
-        * **PC:** Promedio de Controles (10%)
-        * **EX:** Examen (25%)
-        """)
+        # Fotografía de impacto minero (Camión de extracción)
+        st.image("https://images.unsplash.com/photo-1578508496410-ee0dbd4ee4d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", use_container_width=True)
 
-elif seccion == "1. El Paradigma del Esfuerzo":
-    st.markdown('<div class="mensaje-fuerza">La idea no basta: Si no sabes venderla, el proyecto muere.</div>', unsafe_allow_html=True)
+elif slide == "2. El Fracaso del Esfuerzo":
+    st.markdown('<p class="titulo-gigante">El 90% del esfuerzo...</p>', unsafe_allow_html=True)
     
-    st.header("El Error Endémico del Ingeniero")
-    st.markdown('<p class="concepto-clave">El ingeniero civil industrial suele invertir todo su capital intelectual en el modelo de datos, la planilla y la simulación. Al momento de enfrentar al directorio, la presentación se arma la noche anterior. El resultado: una exposición inerte que no moviliza a la toma de decisiones.</p>', unsafe_allow_html=True)
+    # Fotografía abstracta de un tajo abierto / rajo
+    st.image("https://images.unsplash.com/photo-1605647540924-852290f6b0d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80", height=300, use_container_width=True)
     
-    colA, colB = st.columns(2)
-    with colA:
-        st.error("### ❌ Secuencia Tradicional (Destinada al fracaso)")
-        st.markdown("""
-        1. Levantar datos durante semanas.
-        2. Procesar en software de ingeniería.
-        3. Obtener resultados técnicos.
-        4. **(Día anterior):** Abrir PowerPoint, pegar tablas de Excel completas, poner títulos descriptivos.
-        """)
-    with colB:
-        st.success("### ✅ Secuencia Directiva (Genera Acción)")
-        st.markdown("""
-        1. Definir el **Objetivo y la Audiencia** (¿Qué decisión necesito hoy?).
-        2. Diseñar la estructura narrativa (El "Storyboarding").
-        3. Levantar los datos específicos que *sustentan* esa historia.
-        4. Crear apoyos visuales de alta retención.
-        """)
-    
-    st.markdown('<div class="llamado-accion">Llamado a la Acción para el Alumno: A partir de hoy, el diseño de la presentación se inicia el DÍA 1 del proyecto, en paralelo al análisis técnico.</div>', unsafe_allow_html=True)
+    st.markdown('<p class="mensaje-impacto">...se invierte en la planilla, y solo el 10% en convencer al Directorio.</p>', unsafe_allow_html=True)
+    st.markdown('<p class="texto-proyector">¿De qué sirve el mejor modelo de optimización de flota si el Gerente de Operaciones no entiende qué decisión debe tomar?</p>', unsafe_allow_html=True)
 
-elif seccion == "2. La Estructura (Los 7 Pasos)":
-    st.markdown('<div class="mensaje-fuerza">Sin estructura, los datos son solo ruido.</div>', unsafe_allow_html=True)
+elif slide == "3. El Paradigma 50/50":
+    st.markdown('<p class="titulo-gigante">La Regla del Éxito</p>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
     
-    st.markdown('<p class="concepto-clave">Una presentación de alto nivel en la minería requiere una planificación táctica antes de tocar cualquier software de diseño. Siga estos 7 pasos innegociables:</p>', unsafe_allow_html=True)
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown('<div style="background-color:#1E3A8A; padding:50px; border-radius:20px; color:white; height:350px;">'
+                    '<h1 style="font-size:5rem; color:white; margin:0;">50% TÉCNICA</h1>'
+                    '<br><p style="font-size:2.2rem;">El cálculo riguroso, el polinomio, la simulación geoestadística.</p></div>', unsafe_allow_html=True)
+    with col2:
+        st.markdown('<div style="background-color:#DC2626; padding:50px; border-radius:20px; color:white; height:350px;">'
+                    '<h1 style="font-size:5rem; color:white; margin:0;">50% ARTE</h1>'
+                    '<br><p style="font-size:2.2rem;">Saber vender esa idea para que se convierta en una realidad operativa.</p></div>', unsafe_allow_html=True)
+
+elif slide == "4. Caso Real: Radomiro Tomic":
+    st.markdown('<p class="titulo-gigante">El Data Storytelling en la Práctica</p>', unsafe_allow_html=True)
+    st.markdown('<p class="texto-proyector">Caso: Prueba Industrial Sistema IINMAS (Predictivo en Correas) - División Radomiro Tomic.</p>', unsafe_allow_html=True)
     
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["1. Audiencia", "2. Adaptación", "3. Mensaje", "4. Tiempo", "5. Ideas Ancla", "6. Estructura", "7. Visuales"])
+    tab1, tab2 = st.tabs(["❌ La Diapositiva del Novato", "✅ La Diapositiva del Líder"])
     
     with tab1:
-        st.subheader("1. La Audiencia")
-        st.write("¿Quiénes son? ¿Gerentes de mina, directorio corporativo, operadores? ¿Qué les preocupa (costos, seguridad, producción)? Su presentación debe responder a *sus* dolores, no a los suyos.")
+        st.markdown('<p class="mensaje-impacto" style="border-color: grey; color: grey;">Título Inerte: "Resultados de Vibración Fase 2"</p>', unsafe_allow_html=True)
+        # Imagen de un dashboard confuso lleno de números
+        st.image("https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", use_container_width=True)
+        st.markdown('<p class="texto-proyector">Obliga a la gerencia a descifrar los números para entender si es algo bueno o malo.</p>', unsafe_allow_html=True)
+        
     with tab2:
-        st.subheader("2. Adaptación")
-        st.write("Ajuste el nivel de jerga técnica. No le hable de 'polinomios de interpolación Kriging' al gerente de finanzas; háblele de 'certeza en la estimación de reservas'.")
-    with tab3:
-        st.subheader("3. El Mensaje")
-        st.write("Si el proyector se quema a los 2 minutos, ¿cuál es la única frase que la audiencia debe recordar? Ese es su mensaje central.")
-    with tab4:
-        st.subheader("4. El Tiempo")
-        st.write("La atención ejecutiva es limitada. Si le dan 20 minutos, prepare 15 y deje 5 para preguntas. Ensayar con cronómetro es obligatorio.")
-    with tab5:
-        st.subheader("5. Ideas Ancla")
-        st.write("Desarrolle un *Storyboard* (guion gráfico). Defina los 3 o 4 hitos fundamentales que sostienen su mensaje central y que guiarán la narrativa.")
-    with tab6:
-        st.subheader("6. Estructura Lógica")
-        st.write("Organice: Introducción (Contexto/Problema) -> Desarrollo (Datos/Alternativas) -> Conclusión (Recomendación/Decisión).")
-    with tab7:
-        st.subheader("7. Contenidos Visuales")
-        st.write("El último paso. Recién ahora se abren las herramientas (Streamlit, PPT). Se diseñan los gráficos y esquemas que actúan como evidencia de las ideas ancla.")
+        st.markdown('<p class="mensaje-impacto" style="border-color: #10B981; color: #10B981;">Mensaje Directivo: "IINMAS anticipó fallas con 95% de certeza: Recomendamos Roll-out inmediato para evitar detenciones."</p>', unsafe_allow_html=True)
+        st.markdown('<p class="texto-proyector"><b>El Título informa. El Mensaje DIRIGE.</b><br>El gráfico que acompaña esta lámina solo sirve para demostrar esta afirmación irrefutable.</p>', unsafe_allow_html=True)
 
-elif seccion == "3. El Corazón: El Mensaje":
-    st.markdown('<div class="mensaje-fuerza">Los Títulos informan, los Mensajes DIRIGEN.</div>', unsafe_allow_html=True)
+elif slide == "5. El Mensaje Directivo":
+    st.markdown('<p class="titulo-gigante">Diseño Basado en la Acción</p>', unsafe_allow_html=True)
     
-    st.markdown('<p class="concepto-clave">En la minería, el tiempo es el recurso más escaso del directorio. Si usted titula una lámina con "Evolución de Costos de Mantenimiento", obliga a la gerencia a estudiar su gráfico para adivinar el problema. Usted debe entregar la conclusión procesada en el encabezado.</p>', unsafe_allow_html=True)
+    # Imagen de una sala de reuniones ejecutiva
+    st.image("https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80", height=300, use_container_width=True)
     
-    st.divider()
-    
-    col_x, col_y = st.columns(2)
-    with col_x:
-        st.markdown("### El Título Inerte (No usar)")
-        st.error("❌ **Ejecución Presupuestaria de Operaciones Q1 2024**")
-        st.write("Este título no dice nada. Puede ser una ejecución perfecta, un ahorro masivo o una quiebra inminente. La audiencia está ciega hasta que descifra los datos.")
-        
-    with col_y:
-        st.markdown("### El Mensaje Directivo (Obligatorio)")
-        st.success("✅ **🚨 Sobregasto crítico en Mantenimiento: Necesitamos inyectar 26kUSD para asegurar la disponibilidad de la flota.**")
-        st.write("El mensaje entrega el problema, el dato clave y la acción requerida. El gráfico que acompaña esta lámina solo sirve para *demostrar* esta afirmación como evidencia.")
-        
-    st.markdown('<div class="llamado-accion">Regla de Oro: Escriba el mensaje de su lámina. Si alguien lee SOLO ese texto y entiende perfectamente qué decisión se debe tomar, su lámina es exitosa.</div>', unsafe_allow_html=True)
+    st.markdown('<p class="mensaje-impacto">Si la lámpara del proyector explota en el minuto 2...</p>', unsafe_allow_html=True)
+    st.markdown('<p class="texto-proyector">...¿Cuál es la <b>ÚNICA frase</b> con la que el Gerente General debe quedarse en la cabeza?<br>Ese es su mensaje central. Todo el resto es ruido visual.</p>', unsafe_allow_html=True)
