@@ -1,22 +1,43 @@
 import streamlit as st
 
 # ==============================================================================
-# CONFIGURACIÓN GENERAL
+# CONFIGURACIÓN GENERAL Y ESTILOS CORPORATIVOS
 # ==============================================================================
 st.set_page_config(page_title="Gestión Minera UDP", layout="wide", initial_sidebar_state="expanded")
 
-# CSS Ajustado para enmarcar el texto y recuperar el botón del menú lateral
+# CSS Global: Patrón corporativo (Blanco, Azul, Celeste) y Slides de Impacto
 st.markdown("""
     <style>
-    .titulo-slide { font-size: 3rem; color: #1E3A8A; font-weight: bold; margin-bottom: 15px; line-height: 1.2;}
+    /* Tipografía y fondos generales */
+    .stApp { background-color: #FFFFFF; }
+    
+    /* Títulos estándar corporativos */
+    .titulo-slide { font-size: 3rem; color: #003366; font-weight: bold; margin-bottom: 15px; line-height: 1.2; border-bottom: 3px solid #00A4E4; padding-bottom: 10px;}
     .texto-slide { font-size: 1.6rem; color: #333333; line-height: 1.5;}
-    .destacado { background-color: #F3F4F6; border-left: 8px solid #DC2626; padding: 20px; font-size: 1.6rem;}
-    .alerta { background-color: #FEF2F2; border-left: 8px solid #991B1B; padding: 20px; font-size: 1.6rem; color: #991B1B;}
+    
+    /* COMPONENTE DE IMPACTO: Slide exclusiva para mensajes explícitos */
+    .slide-mensaje { 
+        background-color: #003366; 
+        color: #FFFFFF; 
+        padding: 80px 40px; 
+        text-align: center; 
+        border-radius: 8px; 
+        margin: 40px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .slide-mensaje h1 { font-size: 4.5rem; color: #FFFFFF; font-weight: 900; line-height: 1.2; margin: 0; text-transform: uppercase;}
+    .slide-mensaje p { font-size: 1.8rem; color: #00A4E4; margin-top: 20px; font-weight: 500;}
+    
+    /* COMPONENTE: El Salón de la Infamia (Ejemplos de mala práctica) */
+    .bad-slide { background-color: #F8F9FA; border: 2px dashed #DC2626; padding: 20px; font-size: 1.6rem; color: #666666;}
+    
+    /* Destacados corporativos */
+    .destacado-corp { background-color: #F0F8FF; border-left: 8px solid #00A4E4; padding: 20px; font-size: 1.6rem; color: #003366;}
     </style>
 """, unsafe_allow_html=True)
 
 st.sidebar.title("Índice de la Cátedra")
-st.sidebar.info("💡 Tip: Haz clic en la 'X' para ocultar esta barra. Para volver a verla, haz clic en el pequeño símbolo '>' en la esquina superior izquierda.")
+st.sidebar.info("💡 Tip: Haz clic en la 'X' para ocultar esta barra y ganar espacio visual.")
 
 modulo = st.sidebar.radio("Seleccione el Módulo:", [
     "00. Introducción y Reglas",
