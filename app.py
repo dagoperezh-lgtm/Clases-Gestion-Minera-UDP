@@ -107,93 +107,108 @@ elif modulo == "01. El Paradigma del Esfuerzo":
 # ==============================================================================
 
 # ==============================================================================
-# INICIO MÓDULO 02: LA AUDIENCIA ES EL CENTRO
+# INICIO MÓDULO 02: LA AUDIENCIA ES EL CENTRO (INTERACTIVO)
 # ==============================================================================
 elif modulo == "02. La Audiencia es el Centro":
-    st.write("### Navegación de Diapositivas")
-    slide = st.radio("Seleccione la Diapositiva:", ["1. El Fin del Teleprompter", "2. Empatía Estratégica", "3. La Metodología (7 Pasos)", "4. El Arco Narrativo"], horizontal=True, label_visibility="collapsed")
+    st.write("### Navegación Dinámica")
+    slide = st.radio("Seleccione la Diapositiva:", ["1. El Interruptor del Teleprompter", "2. Simulador de Empatía", "3. Los 7 Pasos (Desplegable)", "4. El Arco Narrativo"], horizontal=True, label_visibility="collapsed")
     
     pantalla = st.container(height=700, border=True)
-    import time
     
     with pantalla:
-        if slide == "1. El Fin del Teleprompter":
-            st.markdown('<div class="titulo-slide">La pantalla es para ellos, no para usted</div>', unsafe_allow_html=True)
+        if slide == "1. El Interruptor del Teleprompter":
+            st.markdown('<div class="titulo-slide">La pantalla no es su ayuda de memoria</div>', unsafe_allow_html=True)
+            st.markdown('<div class="texto-slide">El cerebro de su audiencia no puede leer texto complejo y escuchar su voz al mismo tiempo. Active el interruptor para ver la diferencia.</div><br>', unsafe_allow_html=True)
             
-            col1, col2 = st.columns([1, 1.2])
-            with col1:
-                st.image("https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Una audiencia intentando procesar exceso de información", use_container_width=True)
+            # Efecto Toggle interactivo
+            modo_directivo = st.toggle("Desactivar 'Modo Teleprompter' y aplicar Diseño Directivo")
             
-            with col2:
-                st.markdown('<div class="alerta"><b>El Error del Estudiante:</b> Usar el PowerPoint como un documento de Word proyectado, llenando la lámina de viñetas para no olvidar qué decir.</div>', unsafe_allow_html=True)
-                
-                ph = st.empty()
-                txt = '<div class="texto-slide"><b>El problema cognitivo:</b></div>'
-                
-                txt += '<div class="texto-slide">• El cerebro humano no puede leer un texto complejo y escuchar al orador con atención simultáneamente.</div>'
-                ph.markdown(txt, unsafe_allow_html=True)
-                time.sleep(1.5)
-                
-                txt += '<div class="texto-slide">• Si usted pone todo su discurso en la pantalla, la audiencia comenzará a leer, terminará antes que usted, y se desconectará.</div>'
-                ph.markdown(txt, unsafe_allow_html=True)
-                time.sleep(1.5)
-                
-                txt += '<div class="destacado"><b>Solución:</b> La presentación NO es su ayuda de memoria. Es un ancla visual diseñada exclusivamente para facilitar la comprensión de quienes están sentados frente a usted.</div>'
-                ph.markdown(txt, unsafe_allow_html=True)
+            if not modo_directivo:
+                # Lámina Mala (Sobrecargada)
+                st.error("❌ ESTÁNDAR POBRE: La audiencia leerá esto y dejará de escucharlo.")
+                st.markdown("""
+                <div style="background-color: white; padding: 20px; border: 1px solid #ccc;">
+                    <h3 style="color: black;">Situación del Proyecto de Mejora Q3</h3>
+                    <ul>
+                        <li>El análisis de los datos indica que hay una desviación en los tiempos de ciclo.</li>
+                        <li>Se han evaluado 3 alternativas distintas para solucionar el problema de la línea 2.</li>
+                        <li>La alternativa A cuesta $15,000 pero demora 2 meses en llegar el repuesto.</li>
+                        <li>La alternativa B cuesta $25,000 pero tiene disponibilidad inmediata en bodega.</li>
+                        <li>La alternativa C requiere contratar a un consultor externo por $10,000.</li>
+                        <li>Recomendamos la alternativa B para evitar que la producción se detenga, lo que costaría $50,000 diarios.</li>
+                    </ul>
+                </div>
+                """, unsafe_allow_html=True)
+            else:
+                # Lámina Buena (Directiva)
+                st.success("✅ ESTÁNDAR ICI: El mensaje es claro, el orador domina el relato.")
+                st.markdown("""
+                <div style="background-color: white; padding: 20px; border: 1px solid #1E3A8A; border-left: 10px solid #1E3A8A;">
+                    <h2 style="color: #1E3A8A; margin-bottom: 5px;">🚨 Riesgo de detención en Línea 2</h2>
+                    <h3 style="color: #333; margin-top: 0;">Se requiere aprobación de $25k para repuesto inmediato y evitar pérdida de $50k/día.</h3>
+                </div>
+                """, unsafe_allow_html=True)
+                st.image("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="La imagen da el contexto industrial, el expositor da los detalles.", use_container_width=True)
 
-        elif slide == "2. Empatía Estratégica":
-            st.markdown('<div class="titulo-slide">Entender a quién le hablo: El Mapa del Usuario</div>', unsafe_allow_html=True)
-            st.markdown('<div class="texto-slide">Antes de abrir cualquier software, el ingeniero debe mapear a su público. Usted no presenta su proyecto, usted presenta la solución al problema de su audiencia.</div>', unsafe_allow_html=True)
+        elif slide == "2. Simulador de Empatía":
+            st.markdown('<div class="titulo-slide">Simulador: Traduciendo el dato a la audiencia</div>', unsafe_allow_html=True)
+            st.markdown('<div class="texto-slide"><b>Problema Base:</b> "Falla en el motor principal de la cinta transportadora."<br>Seleccione a quién le presentará este problema para ver cómo debe cambiar su mensaje:</div><br>', unsafe_allow_html=True)
+            
+            # Menú interactivo de selección de audiencia
+            audiencia = st.selectbox("Seleccione su Audiencia (Tomador de decisión):", ["-- Seleccione --", "1. Jefe de Turno (Operaciones)", "2. Gerente de Finanzas (Administración)", "3. Gerente General (Estrategia)"])
+            
+            if audiencia == "1. Jefe de Turno (Operaciones)":
+                st.info("Foco de esta audiencia: Continuidad operativa y seguridad en terreno.")
+                st.markdown('<div class="destacado"><b>Mensaje Directivo:</b> "Necesitamos aislar el área del motor C-01 y asignar una cuadrilla mecánica por 4 horas para reemplazar el rodamiento antes del próximo turno."</div>', unsafe_allow_html=True)
+                st.image("https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Contexto: Trabajo mecánico en terreno", use_container_width=True)
+                
+            elif audiencia == "2. Gerente de Finanzas (Administración)":
+                st.warning("Foco de esta audiencia: Presupuesto, OPEX y flujo de caja.")
+                st.markdown('<div class="destacado"><b>Mensaje Directivo:</b> "Requiero la liberación urgente de $8,500 USD del fondo de imprevistos para un repuesto crítico, lo que evitará pagar penalizaciones por retraso en las entregas."</div>', unsafe_allow_html=True)
+                st.image("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Contexto: Impacto en el flujo de caja", use_container_width=True)
+                
+            elif audiencia == "3. Gerente General (Estrategia)":
+                st.success("Foco de esta audiencia: Cumplimiento de metas anuales y riesgo global.")
+                st.markdown('<div class="destacado"><b>Mensaje Directivo:</b> "Para asegurar la meta de producción de este mes, debemos migrar a un sistema de monitoreo predictivo (CAPEX de $50k) que eliminará las detenciones no programadas en la línea principal."</div>', unsafe_allow_html=True)
+                st.image("https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Contexto: Toma de decisión ejecutiva", use_container_width=True)
+
+        elif slide == "3. Los 7 Pasos (Desplegable)":
+            st.markdown('<div class="titulo-slide">Diseñar es el último paso. La Estrategia es el primero.</div>', unsafe_allow_html=True)
+            st.markdown('<div class="texto-slide">Haga clic en cada bloque para explorar el proceso técnico antes de abrir su software de presentaciones.</div>', unsafe_allow_html=True)
+            
+            # Elementos desplegables interactivos
+            with st.expander("Paso 1 y 2: Objetivo y Adaptación de Audiencia"):
+                st.write("**Identifique la meta y el perfil.** ¿Qué decisión necesita que tomen hoy? Adapte su jerga: si habla con financieros, elimine los tecnicismos de ingeniería dura y hable de rentabilidad y riesgos.")
+            
+            with st.expander("Paso 3 y 4: Mensaje Central y Tiempo"):
+                st.write("**El titular y el cronómetro.** Si el proyector falla en el minuto 2, la audiencia debe haber entendido su mensaje clave. Ensaye con cronómetro; el tiempo de un comité ejecutivo es el recurso más caro de la empresa.")
+                
+            with st.expander("Paso 5 y 6: Ideas Ancla y Estructura (Guion Gráfico)"):
+                st.write("**Filtre la evidencia.** Muestre solo los datos que respaldan su mensaje. Ordénelos en un *Storyboard* lógico: Contexto -> Problema -> Evidencia -> Solución.")
+                
+            with st.expander("Paso 7: El Diseño Visual", expanded=True):
+                st.error("🚨 Recién en este paso usted está autorizado a crear diapositivas.")
+                st.write("Con la estructura definida, aplique los principios de atención dirigida: elimine la 'sopa de números', use scorecards y destaque lo anómalo.")
+
+        elif slide == "4. El Arco Narrativo":
+            st.markdown('<div class="titulo-slide">El Storytelling como herramienta de Ingeniería</div>', unsafe_allow_html=True)
             
             col_a, col_b, col_c = st.columns(3)
             with col_a:
-                st.image("https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", use_container_width=True)
-                st.markdown('<div class="destacado" style="font-size: 1.2rem;"><b>1. ¿A quién le presento?</b><br>No es lo mismo pedirle presupuesto al Gerente de Finanzas que explicarle un nuevo proceso al Jefe de Turno. Adapte su lenguaje.</div>', unsafe_allow_html=True)
+                st.markdown('<div style="background-color: #F3F4F6; padding: 20px; border-radius: 10px; height: 350px;">', unsafe_allow_html=True)
+                st.markdown('<h3>1. Introducción<br>(El Gancho)</h3>', unsafe_allow_html=True)
+                st.markdown('<p class="texto-slide">Conecte con el "dolor" o problema operativo de inmediato. Entregue el mensaje clave de frente.</p></div>', unsafe_allow_html=True)
+                st.image("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", use_container_width=True)
             with col_b:
-                st.image("https://images.unsplash.com/photo-1542626991-cbc4e32524cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", use_container_width=True)
-                st.markdown('<div class="destacado" style="font-size: 1.2rem;"><b>2. ¿Qué saben del tema?</b><br>Si usa un nivel técnico excesivo para demostrar cuánto sabe, perderá a la mitad de la sala. Traduzca la complejidad a impacto.</div>', unsafe_allow_html=True)
+                st.markdown('<div style="background-color: #EFF6FF; padding: 20px; border-radius: 10px; height: 350px;">', unsafe_allow_html=True)
+                st.markdown('<h3>2. Desarrollo<br>(La Evidencia)</h3>', unsafe_allow_html=True)
+                st.markdown('<p class="texto-slide">Despliegue sus gráficos, análisis y evaluaciones de alternativas que validan científicamente su propuesta.</p></div>', unsafe_allow_html=True)
+                st.image("https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", use_container_width=True)
             with col_c:
-                st.image("https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", use_container_width=True)
-                st.markdown('<div class="alerta" style="font-size: 1.2rem;"><b>3. ¿Qué deben decidir?</b><br>Si salen de la sala diciendo "qué interesante", usted fracasó. Deben salir diciendo "aprobado", "rechazado" o "comencemos".</div>', unsafe_allow_html=True)
-
-        elif slide == "3. La Metodología (7 Pasos)":
-            st.markdown('<div class="titulo-slide">El diseño es el Paso 7, no el Paso 1</div>', unsafe_allow_html=True)
-            st.markdown('<div class="texto-slide">Siga esta secuencia lógica para construir su mensaje antes de diseñar la primera diapositiva:</div>', unsafe_allow_html=True)
-            
-            # Representación visual de los pasos
-            st.markdown("""
-            <div style="background-color: #F3F4F6; padding: 20px; border-radius: 10px;">
-                <p class="texto-slide"><b>1. Objetivo y Audiencia:</b> Defina la meta final y quién tiene el poder de decisión.</p>
-                <p class="texto-slide"><b>2. Adaptación:</b> Ajuste el nivel de profundidad y la jerga.</p>
-                <p class="texto-slide"><b>3. Mensaje:</b> Defina la frase clave. Si el proyector se apaga, esta es la frase que deben recordar.</p>
-                <p class="texto-slide"><b>4. Tiempo:</b> Ensayar con cronómetro. Respetar el tiempo de los demás es la regla #1 de cortesía ejecutiva.</p>
-                <p class="texto-slide"><b>5. Ideas Ancla:</b> Seleccione solo los datos estrictamente necesarios que sostienen su mensaje.</p>
-                <p class="texto-slide"><b>6. Estructura:</b> Construya el Storyboard (Guion Gráfico). Ordene la narrativa.</p>
-                <div class="destacado" style="margin-top: 15px;"><b>7. Diseño Visual:</b> Recién ahora abra el software de presentaciones.</div>
-            </div>
-            """, unsafe_allow_html=True)
-
-        elif slide == "4. El Arco Narrativo":
-            st.markdown('<div class="titulo-slide">Storytelling: Los datos sin historia son ruido</div>', unsafe_allow_html=True)
-            
-            col_x, col_y = st.columns([1, 1.5])
-            with col_x:
-                st.image("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Construyendo el relato", use_container_width=True)
-            
-            with col_y:
-                ph_story = st.empty()
-                txt_s = '<div class="texto-slide">Cómo estructurar la presentación para mantener la atención:</div><br>'
-                
-                txt_s += '<div class="destacado"><b>A. Introducción (El Gancho)</b><br>Inicie con el problema o la oportunidad. Conecte inmediatamente con el "dolor" de su audiencia para asegurar su atención. Entregue el mensaje clave.</div><br>'
-                ph_story.markdown(txt_s, unsafe_allow_html=True)
-                time.sleep(1.5)
-                
-                txt_s += '<div class="destacado"><b>B. Desarrollo (La Evidencia)</b><br>Entregue los datos, el análisis riguroso y los gráficos que demuestran lógicamente que su evaluación es la correcta. Evite datos de "relleno".</div><br>'
-                ph_story.markdown(txt_s, unsafe_allow_html=True)
-                time.sleep(1.5)
-                
-                txt_s += '<div class="alerta"><b>C. Conclusión (El Cierre)</b><br>Entregue una conclusión acorde a los contenidos mostrados, que refuerce el mensaje central y haga un llamado a la acción inconfundible.</div>'
-                ph_story.markdown(txt_s, unsafe_allow_html=True)
+                st.markdown('<div style="background-color: #FEF2F2; padding: 20px; border-radius: 10px; height: 350px;">', unsafe_allow_html=True)
+                st.markdown('<h3>3. Conclusión<br>(El Cierre)</h3>', unsafe_allow_html=True)
+                st.markdown('<p class="texto-slide">Refuerce el impacto de no hacer nada y establezca un llamado a la acción inconfundible (aprobación).</p></div>', unsafe_allow_html=True)
+                st.image("https://images.unsplash.com/photo-1507537362848-9c7e70b7b5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", use_container_width=True)
 
 # ==============================================================================
 # FIN MÓDULO 02
