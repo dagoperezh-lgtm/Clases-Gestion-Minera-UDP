@@ -450,7 +450,7 @@ elif modulo == "04. Puesta en Escena y Contingencias":
         
         st.markdown("""
         <div class="slide-mensaje" style="margin-top: -80px; position: relative; z-index: 10; width: 85%; margin-left: auto; margin-right: auto; padding: 40px;">
-            <h1 style="font-size: 3.5rem;">SU PROYECTO VALE LO QUE VALE SU CAPACIDAD DE COMUNICARLO.</h1>
+            <h1 style="font-size: 3.5rem;">Un proyecto vale tanto como la capacidad de comunicarlo.</h1>
             <p style="color: #00A4E4; font-weight: bold;">Cátedra de Gestión del Negocio Minero - UDP</p>
         </div>
         """, unsafe_allow_html=True)
