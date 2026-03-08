@@ -1,6 +1,9 @@
 import streamlit as st
 
 # ==============================================================================
+# Cimport streamlit as st
+
+# ==============================================================================
 # CONFIGURACIÓN GENERAL Y ESTILOS CORPORATIVOS
 # ==============================================================================
 st.set_page_config(page_title="Gestión Minera UDP", layout="wide", initial_sidebar_state="expanded")
@@ -18,15 +21,15 @@ st.markdown("""
     /* COMPONENTE DE IMPACTO: Slide exclusiva para mensajes explícitos */
     .slide-mensaje { 
         background-color: #003366; 
-        color: #FFFFFF; 
         padding: 80px 40px; 
         text-align: center; 
         border-radius: 8px; 
         margin: 40px 0;
         box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        border-bottom: 8px solid #00A4E4; /* Acento corporativo trasladado al borde */
     }
     .slide-mensaje h1 { font-size: 4.5rem; color: #FFFFFF; font-weight: 900; line-height: 1.2; margin: 0; text-transform: uppercase;}
-    .slide-mensaje p { font-size: 1.8rem; color: #00A4E4; margin-top: 20px; font-weight: 500;}
+    .slide-mensaje p { font-size: 1.8rem; color: #FFFFFF; margin-top: 20px; font-weight: 400; opacity: 0.95;} /* Texto en blanco puro para contraste perfecto */
     
     /* COMPONENTE: El Salón de la Infamia (Ejemplos de mala práctica) */
     .bad-slide { background-color: #F8F9FA; border: 2px dashed #DC2626; padding: 20px; font-size: 1.6rem; color: #666666;}
