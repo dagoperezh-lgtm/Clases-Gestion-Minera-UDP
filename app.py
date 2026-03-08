@@ -151,106 +151,113 @@ elif modulo == "01. El Paradigma del Esfuerzo":
 # ==============================================================================
 elif modulo == "02. La Audiencia es el Centro":
     st.write("### Navegación Dinámica")
-    # Si ves estos nuevos títulos en los botones, significa que la actualización funcionó
-    slide = st.radio("Seleccione la Diapositiva:", ["1. El Interruptor Visual", "2. Simulador de Empatía", "3. Fases y 7 Pasos", "4. El Arco Narrativo"], horizontal=True, label_visibility="collapsed")
+    slide = st.radio("Seleccione la Diapositiva:", ["1. El Teleprompter", "2. Simulador Operacional", "3. Regla de Adaptación", "4. Los 7 Pasos", "5. Storytelling"], horizontal=True, label_visibility="collapsed")
     
-    # Eliminamos el st.container(height=700) que estaba cortando y dejando en blanco tu contenido
     st.markdown("<br>", unsafe_allow_html=True)
     
-    if slide == "1. El Interruptor Visual":
+    if slide == "1. El Teleprompter":
         st.markdown('<div class="titulo-slide">La pantalla no es su ayuda de memoria</div>', unsafe_allow_html=True)
-        st.markdown('<div class="texto-slide">El cerebro de su audiencia no puede leer texto complejo y escuchar su voz al mismo tiempo. <b>Active el interruptor</b> para ver la diferencia.</div><br>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide">El cerebro de su audiencia no puede leer texto complejo y escuchar su voz al mismo tiempo. <b>Active el interruptor</b> para ver el contraste corporativo.</div><br>', unsafe_allow_html=True)
         
         modo_directivo = st.toggle("Desactivar 'Modo Teleprompter' y aplicar Diseño Directivo")
         
         if not modo_directivo:
             st.error("❌ ESTÁNDAR POBRE: La audiencia leerá esto y dejará de escucharlo.")
             st.markdown("""
-            <div style="background-color: white; padding: 20px; border: 1px solid #ccc;">
-                <h3 style="color: black;">Situación del Proyecto</h3>
+            <div class="bad-slide">
+                <h3 style="color: black;">Situación de Mantenimiento Q3</h3>
                 <ul>
-                    <li>El análisis indica desviación en tiempos de ciclo.</li>
-                    <li>La alternativa A cuesta $15k pero demora 2 meses.</li>
-                    <li>La alternativa B cuesta $25k con disponibilidad inmediata.</li>
-                    <li>Recomendamos la alternativa B para evitar detención ($50k diarios).</li>
+                    <li>El análisis de la falla indica que hay desgaste prematuro.</li>
+                    <li>La alternativa A demora 2 meses en llegar.</li>
+                    <li>La alternativa B tiene disponibilidad inmediata en bodega central.</li>
+                    <li>Recomendamos la alternativa B para evitar que la producción de la planta de molienda se detenga por completo durante la próxima semana.</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
         else:
-            st.success("✅ ESTÁNDAR ICI: El mensaje es claro, el orador domina el relato.")
+            st.success("✅ ESTÁNDAR CORPORATIVO: El mensaje es claro, el orador domina el relato.")
             st.markdown("""
-            <div style="background-color: white; padding: 20px; border: 1px solid #1E3A8A; border-left: 10px solid #1E3A8A;">
-                <h2 style="color: #1E3A8A; margin-bottom: 5px;">🚨 Riesgo Crítico en Línea 2</h2>
-                <h3 style="color: #333; margin-top: 0;">Aprobación requerida: $25k para repuesto inmediato. Evita pérdida de $50k/día.</h3>
+            <div style="background-color: white; padding: 20px; border: 1px solid #003366; border-left: 10px solid #00A4E4; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <h2 style="color: #003366; margin-bottom: 5px;">🚨 Riesgo Inminente en Planta de Molienda</h2>
+                <h3 style="color: #333; margin-top: 0;">Requerimos liberar repuesto de Bodega Central hoy para evitar detención total de la línea.</h3>
             </div>
             """, unsafe_allow_html=True)
-            st.image("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="El expositor entrega el detalle, la pantalla ancla el mensaje central.", use_container_width=True)
+            st.image("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="El expositor entrega el detalle técnico verbalmente, la pantalla ancla el mensaje central.", use_container_width=True)
 
-    elif slide == "2. Simulador de Empatía":
+    elif slide == "2. Simulador Operacional":
         st.markdown('<div class="titulo-slide">Simulador: Traduciendo el dato a la audiencia</div>', unsafe_allow_html=True)
-        st.markdown('<div class="texto-slide"><b>Problema Base:</b> "Falla en el motor principal de la cinta transportadora."<br>Seleccione a quién le presentará este problema para ver cómo debe cambiar su mensaje:</div><br>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide"><b>Evento Operacional:</b> Falla catastrófica en el sistema de lubricación del Chancador Primario.<br>Seleccione a quién le presentará este evento para ver cómo debe adaptar su mensaje en la industria:</div><br>', unsafe_allow_html=True)
         
-        audiencia = st.selectbox("Seleccione su Audiencia (Tomador de decisión):", ["-- Seleccione --", "1. Jefe de Turno (Operaciones)", "2. Gerente de Finanzas (Administración)", "3. Gerente General (Estrategia)"])
+        audiencia = st.selectbox("Seleccione su Audiencia (Tomador de decisión):", ["-- Seleccione --", "1. Jefe de Turno (Operaciones)", "2. Superintendente de Mina (Planificación)", "3. Gerencia General / Directorio (Estrategia)"])
         
         if audiencia == "1. Jefe de Turno (Operaciones)":
-            st.info("Foco de esta audiencia: Continuidad operativa y seguridad en terreno.")
-            st.markdown('<div class="destacado"><b>Mensaje Directivo:</b> "Necesitamos aislar el área del motor y asignar una cuadrilla mecánica por 4 horas para reemplazar el rodamiento."</div>', unsafe_allow_html=True)
-            st.image("https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", use_container_width=True)
+            st.info("Foco de esta audiencia: Seguridad y maniobra inmediata en terreno.")
+            st.markdown('<div class="destacado-corp"><b>Mensaje Directivo:</b> "Aplicar protocolo de bloqueo de energía de inmediato. Requerimos aislar el área del Chancador Primario por 8 horas para el cambio seguro de componentes."</div>', unsafe_allow_html=True)
             
-        elif audiencia == "2. Gerente de Finanzas (Administración)":
-            st.warning("Foco de esta audiencia: Presupuesto, OPEX y flujo de caja.")
-            st.markdown('<div class="destacado"><b>Mensaje Directivo:</b> "Requiero liberar $8,500 USD urgentes para un repuesto crítico, evitando pagar penalizaciones por retraso en producción."</div>', unsafe_allow_html=True)
-            st.image("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", use_container_width=True)
+        elif audiencia == "2. Superintendente de Mina (Planificación)":
+            st.warning("Foco de esta audiencia: Continuidad operacional y cumplimiento de metas del turno.")
+            st.markdown('<div class="destacado-corp"><b>Mensaje Directivo:</b> "El chancador estará detenido por 8 horas. Debemos desviar la flota de CAEX al stock de mineral de baja ley para no detener el ritmo de extracción de la mina."</div>', unsafe_allow_html=True)
             
-        elif audiencia == "3. Gerente General (Estrategia)":
-            st.success("Foco de esta audiencia: Cumplimiento de metas anuales y riesgo global.")
-            st.markdown('<div class="destacado"><b>Mensaje Directivo:</b> "Para asegurar la meta del mes, debemos migrar a monitoreo predictivo ($50k CAPEX) eliminando detenciones no programadas."</div>', unsafe_allow_html=True)
-            st.image("https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", use_container_width=True)
+        elif audiencia == "3. Gerencia General / Directorio (Estrategia)":
+            st.success("Foco de esta audiencia: Impacto financiero (VAN, CAPEX, OPEX) y riesgo del negocio.")
+            st.markdown('<div class="destacado-corp"><b>Mensaje Directivo:</b> "La detención impactó el plan mensual en 15.000 toneladas de cobre fino. Solicitamos adelantar el CAPEX de $250k para un sistema de lubricación redundante, cuyo VAN es positivo al evitar solo una detención futura."</div>', unsafe_allow_html=True)
 
-    elif slide == "3. Fases y 7 Pasos":
-        st.markdown('<div class="titulo-slide">Los 7 Pasos: De la Estrategia al Diseño</div>', unsafe_allow_html=True)
-        st.markdown('<div class="texto-slide">La secuencia innegociable antes de abrir el software de presentaciones.</div><br>', unsafe_allow_html=True)
+    elif slide == "3. Regla de Adaptación":
+        # Componente de Impacto Corporativo
+        st.markdown("""
+        <div class="slide-mensaje">
+            <h1>A AUDIENCIAS DISTINTAS, TRADUCCIONES DISTINTAS</h1>
+            <p>El mismo dato técnico tiene diferentes significados dependiendo de la silla que ocupa quien lo mira.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide" style="text-align: center;">No obligue al Gerente General a pensar como un Jefe de Turno. <b>Traduzca la ingeniería a impacto en el negocio.</b></div>', unsafe_allow_html=True)
+
+    elif slide == "4. Los 7 Pasos":
+        st.markdown('<div class="titulo-slide">Los 7 Pasos: La Metodología ICI</div>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide">La secuencia innegociable antes de abrir su software de presentaciones.</div><br>', unsafe_allow_html=True)
 
         col1, col2 = st.columns(2)
 
         with col1:
-            st.info("🎯 FASE 1: ESTRATEGIA Y MENSAJE")
-            st.markdown("""
-            <div style="font-size: 1.2rem; line-height: 1.6;">
-            <b>1. Objetivo y Audiencia:</b> ¿Qué decisión busco? ¿Quién la toma?<br>
-            <b>2. Adaptación:</b> Ajuste el nivel técnico y la jerga.<br>
-            <b>3. Mensaje Central:</b> Defina el titular directivo.<br>
-            <b>4. Tiempo:</b> Ensaye rigurosamente con cronómetro.
-            </div>
-            """, unsafe_allow_html=True)
-            st.image("https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", caption="Análisis estratégico inicial", use_container_width=True)
+            st.markdown('<div class="destacado-corp" style="margin-bottom: 15px;"><b>FASE 1: ESTRATEGIA Y MENSAJE</b><br><br>'
+            '<span style="font-size: 1.2rem; line-height: 1.5;">'
+            '<b>1. Audiencia:</b> ¿A quién le presento y qué nivel técnico tiene?<br>'
+            '<b>2. Adaptación:</b> Ajuste la profundidad y la jerga a esa audiencia.<br>'
+            '<b>3. Mensaje Central:</b> Defina la idea ancla (Si el proyector falla, esto es lo que deben recordar).<br>'
+            '<b>4. Tiempo:</b> Ensaye con cronómetro. El tiempo directivo es oro.'
+            '</span></div>', unsafe_allow_html=True)
 
         with col2:
-            st.warning("🏗️ FASE 2: ESTRUCTURA (STORYBOARD)")
-            st.markdown("""
-            <div style="font-size: 1.2rem; line-height: 1.6;">
-            <b>5. Ideas Ancla:</b> Seleccione solo la evidencia estrictamente necesaria.<br>
-            <b>6. Estructura:</b> Ordene el flujo narrativo (Contexto -> Evidencia -> Solución).
-            </div>
-            """, unsafe_allow_html=True)
-            st.image("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", caption="Creación del Guion Gráfico", use_container_width=True)
+            st.markdown('<div class="destacado-corp" style="border-left-color: #003366; margin-bottom: 15px;"><b>FASE 2: ESTRUCTURA (STORYBOARD)</b><br><br>'
+            '<span style="font-size: 1.2rem; line-height: 1.5;">'
+            '<b>5. Ideas Ancla:</b> Filtre. Seleccione solo la evidencia que valida su mensaje.<br>'
+            '<b>6. Estructura:</b> Ordene el flujo narrativo lógicamente.'
+            '</span></div>', unsafe_allow_html=True)
 
         st.error("🎨 FASE 3: DISEÑO VISUAL")
-        st.markdown('<div style="font-size: 1.2rem; line-height: 1.6;"><b>7. Diapositivas:</b> Recién ahora construya las láminas, aplicando contraste, jerarquía y atención dirigida.</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-size: 1.2rem; background-color: #FEF2F2; padding: 15px; border-radius: 5px; color: #991B1B; border-left: 8px solid #DC2626;"><b>7. Diapositivas:</b> Recién ahora abra el programa y construya las láminas, aplicando contraste corporativo y atención dirigida.</div>', unsafe_allow_html=True)
 
-    elif slide == "4. El Arco Narrativo":
-        st.markdown('<div class="titulo-slide">El Storytelling como herramienta directiva</div>', unsafe_allow_html=True)
+    elif slide == "5. Storytelling":
+        st.markdown('<div class="titulo-slide">El Arco Narrativo de la Ingeniería</div>', unsafe_allow_html=True)
         
         col_a, col_b, col_c = st.columns(3)
         with col_a:
-            st.markdown('<div style="background-color: #F3F4F6; padding: 20px; border-radius: 10px; height: 350px;"><h3>1. Introducción<br>(El Gancho)</h3><p class="texto-slide">Conecte con el "dolor" operativo de inmediato. Entregue el mensaje clave de frente.</p></div>', unsafe_allow_html=True)
+            st.markdown('<div style="background-color: #F8F9FA; border-top: 5px solid #00A4E4; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); height: 260px;">'
+                        '<h3 style="color: #003366;">1. Introducción<br>(El Gancho)</h3>'
+                        '<p style="font-size: 1.2rem; color: #555;">Conecte de inmediato con el problema del negocio o la oportunidad. Plantee su mensaje clave de frente, sin rodeos.</p></div>', unsafe_allow_html=True)
         with col_b:
-            st.markdown('<div style="background-color: #EFF6FF; padding: 20px; border-radius: 10px; height: 350px;"><h3>2. Desarrollo<br>(La Evidencia)</h3><p class="texto-slide">Despliegue sus gráficos y análisis que validan científicamente su propuesta.</p></div>', unsafe_allow_html=True)
+            st.markdown('<div style="background-color: #F8F9FA; border-top: 5px solid #003366; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); height: 260px;">'
+                        '<h3 style="color: #003366;">2. Desarrollo<br>(La Evidencia)</h3>'
+                        '<p style="font-size: 1.2rem; color: #555;">Despliegue sus gráficos limpios, análisis de alternativas y validación científica que demuestran que su propuesta es correcta.</p></div>', unsafe_allow_html=True)
         with col_c:
-            st.markdown('<div style="background-color: #FEF2F2; padding: 20px; border-radius: 10px; height: 350px;"><h3>3. Conclusión<br>(El Cierre)</h3><p class="texto-slide">Refuerce el impacto y establezca un llamado a la acción inconfundible (aprobación).</p></div>', unsafe_allow_html=True)
+            st.markdown('<div style="background-color: #F0F8FF; border-top: 5px solid #DC2626; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); height: 260px;">'
+                        '<h3 style="color: #003366;">3. Conclusión<br>(El Cierre)</h3>'
+                        '<p style="font-size: 1.2rem; color: #555;">Refuerce el impacto (qué pasa si no hacemos nada) y establezca un llamado a la acción inconfundible para que el directorio apruebe.</p></div>', unsafe_allow_html=True)
+
 # ==============================================================================
 # FIN MÓDULO 02
 # ==============================================================================
+
 
 # ==============================================================================
 # INICIO MÓDULO 03: DATA STORYTELLING Y EL MENSAJE
