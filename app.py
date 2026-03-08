@@ -1,84 +1,70 @@
 import streamlit as st
 
-# Configuración en modo "Pantalla Completa/Proyector"
-st.set_page_config(page_title="Gestión Minera | Presentaciones Efectivas", page_icon="⛏️", layout="wide", initial_sidebar_state="collapsed")
+# Configuración con el menú lateral SIEMPRE abierto
+st.set_page_config(page_title="Gestión Minera UDP", layout="wide", initial_sidebar_state="expanded")
 
-# Inyección de CSS para forzar fuentes gigantes y aspecto de proyector
+# CSS para formato de presentación (fuentes grandes, sin ocultar el menú)
 st.markdown("""
     <style>
-    .titulo-gigante { font-size: 5rem !important; font-weight: 900; color: #1E3A8A; line-height: 1.1; margin-bottom: 20px;}
-    .mensaje-impacto { font-size: 3rem !important; font-weight: 700; color: #DC2626; border-left: 15px solid #DC2626; padding-left: 30px; margin-top: 30px; margin-bottom: 30px;}
-    .texto-proyector { font-size: 2.2rem !important; color: #374151; line-height: 1.4; }
-    .stApp { background-color: #ffffff; }
-    /* Ocultar elementos por defecto de Streamlit para limpiar la pantalla */
-    header {visibility: hidden;}
-    footer {visibility: hidden;}
+    .titulo-slide { font-size: 3.5rem; color: #1E3A8A; font-weight: bold; margin-bottom: 20px;}
+    .texto-slide { font-size: 1.8rem; color: #333333; line-height: 1.6;}
+    .destacado { background-color: #F3F4F6; border-left: 8px solid #DC2626; padding: 20px; font-size: 1.8rem;}
     </style>
 """, unsafe_allow_html=True)
 
-# Menú lateral discreto (solo para ti, para cambiar la slide)
-st.sidebar.title("Control del Profesor")
-slide = st.sidebar.radio("Navegación de Diapositivas:", [
-    "1. Portada",
-    "2. El Fracaso del Esfuerzo",
-    "3. El Paradigma 50/50",
-    "4. Caso Real: Radomiro Tomic",
-    "5. El Mensaje Directivo"
+# Menú Lateral Principal
+st.sidebar.title("Índice de la Cátedra")
+modulo = st.sidebar.radio("Seleccione el Módulo:", [
+    "00. Introducción y Reglas (Pág. 1-4)",
+    "01. Próximos módulos..." # Los agregaremos en los siguientes pasos
 ])
 
-if slide == "1. Portada":
-    col1, col2 = st.columns([1.2, 1])
-    with col1:
-        st.markdown('<br><br><br><p class="titulo-gigante">Presentaciones<br>que Movilizan</p>', unsafe_allow_html=True)
-        st.markdown('<p class="texto-proyector" style="color:#6B7280;">Gestión del Negocio Minero<br><b>Ingeniería Civil Industrial</b></p>', unsafe_allow_html=True)
-    with col2:
-        # Fotografía de impacto minero (Camión de extracción)
-        st.image("https://images.unsplash.com/photo-1578508496410-ee0dbd4ee4d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", use_container_width=True)
+if modulo == "00. Introducción y Reglas (Pág. 1-4)":
+    # Navegación horizontal de láminas para que sea evidente cómo avanzar
+    st.write("### Controles de la Presentación")
+    slide = st.radio("Seleccione la Diapositiva:", ["Pág 1: Portada", "Pág 2: Objetivos", "Pág 3: Evaluación", "Pág 4: Condiciones"], horizontal=True)
+    st.divider()
 
-elif slide == "2. El Fracaso del Esfuerzo":
-    st.markdown('<p class="titulo-gigante">El 90% del esfuerzo...</p>', unsafe_allow_html=True)
-    
-    # Fotografía abstracta de un tajo abierto / rajo
-    st.image("https://images.unsplash.com/photo-1605647540924-852290f6b0d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80", height=300, use_container_width=True)
-    
-    st.markdown('<p class="mensaje-impacto">...se invierte en la planilla, y solo el 10% en convencer al Directorio.</p>', unsafe_allow_html=True)
-    st.markdown('<p class="texto-proyector">¿De qué sirve el mejor modelo de optimización de flota si el Gerente de Operaciones no entiende qué decisión debe tomar?</p>', unsafe_allow_html=True)
+    if slide == "Pág 1: Portada":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.markdown('<div class="titulo-slide">Gestión del Negocio Minero</div>', unsafe_allow_html=True)
+            st.markdown('<div class="texto-slide"><br><b>Profesor:</b> Dagoberto Pérez Herrera<br>Ingeniería Civil Industrial</div>', unsafe_allow_html=True)
+        with col2:
+            st.image("https://images.unsplash.com/photo-1578508496410-ee0dbd4ee4d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", use_container_width=True)
 
-elif slide == "3. El Paradigma 50/50":
-    st.markdown('<p class="titulo-gigante">La Regla del Éxito</p>', unsafe_allow_html=True)
-    st.markdown('<br>', unsafe_allow_html=True)
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown('<div style="background-color:#1E3A8A; padding:50px; border-radius:20px; color:white; height:350px;">'
-                    '<h1 style="font-size:5rem; color:white; margin:0;">50% TÉCNICA</h1>'
-                    '<br><p style="font-size:2.2rem;">El cálculo riguroso, el polinomio, la simulación geoestadística.</p></div>', unsafe_allow_html=True)
-    with col2:
-        st.markdown('<div style="background-color:#DC2626; padding:50px; border-radius:20px; color:white; height:350px;">'
-                    '<h1 style="font-size:5rem; color:white; margin:0;">50% ARTE</h1>'
-                    '<br><p style="font-size:2.2rem;">Saber vender esa idea para que se convierta en una realidad operativa.</p></div>', unsafe_allow_html=True)
-
-elif slide == "4. Caso Real: Radomiro Tomic":
-    st.markdown('<p class="titulo-gigante">El Data Storytelling en la Práctica</p>', unsafe_allow_html=True)
-    st.markdown('<p class="texto-proyector">Caso: Prueba Industrial Sistema IINMAS (Predictivo en Correas) - División Radomiro Tomic.</p>', unsafe_allow_html=True)
-    
-    tab1, tab2 = st.tabs(["❌ La Diapositiva del Novato", "✅ La Diapositiva del Líder"])
-    
-    with tab1:
-        st.markdown('<p class="mensaje-impacto" style="border-color: grey; color: grey;">Título Inerte: "Resultados de Vibración Fase 2"</p>', unsafe_allow_html=True)
-        # Imagen de un dashboard confuso lleno de números
-        st.image("https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", use_container_width=True)
-        st.markdown('<p class="texto-proyector">Obliga a la gerencia a descifrar los números para entender si es algo bueno o malo.</p>', unsafe_allow_html=True)
+    elif slide == "Pág 2: Objetivos":
+        st.markdown('<div class="titulo-slide">Objetivo de la Gestión de la Industria Minera</div>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide">El objetivo general del curso es proporcionar al alumno las herramientas necesarias para encarar su potencial incorporación profesional a la industria minera con los conocimientos generales, lenguaje técnico y cultura minera, que faciliten y contribuyan a su desarrollo profesional en esta rama de la industria o cualquier otra nacional y global.</div><br>', unsafe_allow_html=True)
         
-    with tab2:
-        st.markdown('<p class="mensaje-impacto" style="border-color: #10B981; color: #10B981;">Mensaje Directivo: "IINMAS anticipó fallas con 95% de certeza: Recomendamos Roll-out inmediato para evitar detenciones."</p>', unsafe_allow_html=True)
-        st.markdown('<p class="texto-proyector"><b>El Título informa. El Mensaje DIRIGE.</b><br>El gráfico que acompaña esta lámina solo sirve para demostrar esta afirmación irrefutable.</p>', unsafe_allow_html=True)
+        st.markdown('<div class="destacado"><b>Objetivos Específicos</b><br>Al finalizar el curso, el alumno debe haber desarrollado las siguientes competencias: entendimiento de los factores claves que permiten la viabilidad y sostenibilidad del negocio minero en Chile.<br><br>Su potencial vinculación con el mundo profesional minero radica en la capacidad que adquiere el estudiante en comprender los procesos operacionales y los aspectos claves de la gestión de los recursos en la minería, como por ejemplo: recursos mineros, gestión de las fuentes de energía, gestión de los recursos hídricos, gestión de recursos humanos.</div>', unsafe_allow_html=True)
 
-elif slide == "5. El Mensaje Directivo":
-    st.markdown('<p class="titulo-gigante">Diseño Basado en la Acción</p>', unsafe_allow_html=True)
-    
-    # Imagen de una sala de reuniones ejecutiva
-    st.image("https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80", height=300, use_container_width=True)
-    
-    st.markdown('<p class="mensaje-impacto">Si la lámpara del proyector explota en el minuto 2...</p>', unsafe_allow_html=True)
-    st.markdown('<p class="texto-proyector">...¿Cuál es la <b>ÚNICA frase</b> con la que el Gerente General debe quedarse en la cabeza?<br>Ese es su mensaje central. Todo el resto es ruido visual.</p>', unsafe_allow_html=True)
+    elif slide == "Pág 3: Evaluación":
+        st.markdown('<div class="titulo-slide">Polinomio de Evaluación</div>', unsafe_allow_html=True)
+        
+        # Fórmula estricta en LaTeX según el PDF
+        st.latex(r"NF = PM \cdot 0.3 + AP \cdot 0.1 + PS \cdot 0.25 + PC \cdot 0.1 + EX \cdot 0.25")
+        st.markdown("<br>", unsafe_allow_html=True)
+        
+        col_a, col_b = st.columns(2)
+        with col_a:
+            st.markdown("""
+            <div class="texto-slide">
+            <b>NF:</b> Nota Final<br>
+            <b>PM:</b> Proyecto de Mejora (0.3)<br>
+            <b>AP:</b> Avance de Proyecto de Mejora (0.1)
+            </div>
+            """, unsafe_allow_html=True)
+        with col_b:
+            st.markdown("""
+            <div class="texto-slide">
+            <b>PS:</b> Prueba Solemne (0.25)<br>
+            <b>PC:</b> Promedio de Controles (0.1)<br>
+            <b>EX:</b> Examen (0.25)
+            </div>
+            """, unsafe_allow_html=True)
+
+    elif slide == "Pág 4: Condiciones":
+        st.markdown('<div class="titulo-slide">Condiciones de Aprobación</div>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide"><i>(Aquí insertaremos el texto íntegro de la página 4 de tu documento original)</i></div>', unsafe_allow_html=True)
+        # Espacio preparado para el texto completo de la pág 4
