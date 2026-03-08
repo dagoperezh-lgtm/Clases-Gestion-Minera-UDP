@@ -411,8 +411,8 @@ elif modulo == "04. Puesta en Escena y Contingencias":
             with st.expander("🚨 Escenario 1: Le hacen una pregunta que NO sabe (y no debería saber)"):
                 st.markdown('<div class="destacado-corp" style="border-left-color: #DC2626;"><b>Estrategia: Honestidad Brutal.</b><br>Nunca invente un dato frente a un comité. Diga: <i>"Esa variable escapa al alcance de este modelo actual, pero es un punto crítico. Lo levantaré con el equipo y le enviaré el informe mañana a primera hora."</i></div>', unsafe_allow_html=True)
             
-            with st.expander("⚠️ Escenario 2: Le hacen una pregunta que SÍ debería saber, pero olvidó"):
-                st.markdown('<div class="destacado-corp" style="border-left-color: #F59E0B;"><b>Estrategia: Ganar Tiempo o Derivar.</b><br>1. <b>Diferir:</b> <i>"Ese es un punto excelente que se cruza con la lámina de CAPEX que veremos en 3 minutos. Lo abordamos ahí."</i><br>2. <b>Rebotar a la audiencia:</b> Si hay un experto en la sala, valídelo: <i>"Gerente Pérez, con su experiencia en la planta, ¿cómo veíamos este indicador?"</i></div>', unsafe_allow_html=True)
+            with st.expander("⚠️ Escenario 2: Le hacen una pregunta que SÍ debería saber"):
+                st.markdown('<div class="destacado-corp" style="border-left-color: #F59E0B;"><b>Estrategia: Ganar Tiempo o Derivar.</b><br>1. <b>Diferir:</b> <i>"Ese es un punto excelente que se cruza con la lámina de CAPEX que veremos en 3 minutos. Lo abordamos ahí."</i><br>2. <b>Rebotar a la audiencia:</b> Si hay un experto en la sala, valídelo: <i>"Jefe de Área, con su experiencia en la planta, ¿cómo veíamos este indicador?"</i></div>', unsafe_allow_html=True)
             
             with st.expander("🛡️ Escenario 3: Le hacen una pregunta hostil o fuera de contexto"):
                 st.markdown('<div class="destacado-corp" style="border-left-color: #10B981;"><b>Estrategia: El Puente.</b><br>No confronte. Reconozca y redirija a su mensaje central: <i>"Entiendo su preocupación por el costo del año pasado, y precisamente por eso el modelo que propongo hoy asegura que no repitamos esa desviación."</i></div>', unsafe_allow_html=True)
