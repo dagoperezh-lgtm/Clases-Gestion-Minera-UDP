@@ -22,7 +22,8 @@ modulo = st.sidebar.radio("Seleccione el Módulo:", [
     "00. Introducción y Reglas",
     "01. El Paradigma del Esfuerzo",
     "02. Los 7 Pasos de Preparación",
-    "03. Data Storytelling y El Mensaje"
+    "03. Data Storytelling y El Mensaje",
+    "04. Puesta en Escena y Contingencias"
 ])
 # ==============================================================================
 # INICIO MÓDULO 00: INTRODUCCIÓN Y REGLAS
@@ -217,4 +218,62 @@ elif modulo == "03. Data Storytelling y El Mensaje":
 
 # ==============================================================================
 # FIN MÓDULO 03
+# ==============================================================================
+
+# ==============================================================================
+# INICIO MÓDULO 04: PUESTA EN ESCENA Y CONTINGENCIAS
+# ==============================================================================
+elif modulo == "04. Puesta en Escena y Contingencias":
+    st.write("### Navegación de Diapositivas")
+    slide = st.radio("Seleccione la Diapositiva:", ["Pág 122: Preguntas Difíciles", "Pág 123: Ley de Murphy", "Pág 124: Mensaje Final"], horizontal=True, label_visibility="collapsed")
+    
+    pantalla = st.container(height=650, border=True)
+    import time
+    
+    with pantalla:
+        if slide == "Pág 122: Preguntas Difíciles":
+            st.markdown('<div class="titulo-slide">Manejo Estratégico de Preguntas Difíciles</div>', unsafe_allow_html=True)
+            
+            col1, col2 = st.columns([1, 1.2])
+            with col1:
+                # Imagen de contexto: Un directorio minero haciendo preguntas
+                st.image("https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", use_container_width=True)
+            
+            with col2:
+                ph_preg = st.empty()
+                txt_preg = '<div class="texto-slide"><b>Las preguntas difíciles conviene manejarlas con estrategia:</b></div><br>'
+                
+                txt_preg += '<div class="destacado">1. Sea honesto: Si la pregunta no corresponde o no conoce la respuesta, hágalo saber.</div><br>'
+                ph_preg.markdown(txt_preg, unsafe_allow_html=True)
+                time.sleep(1.5)
+                
+                txt_preg += '<div class="texto-slide"><b>Si debería saberla y no la sabe:</b></div>'
+                txt_preg += '<ul><li>Diferirla para más adelante.</li><li>"Justo en la próxima sesión lo veremos..."</li><li>Preguntar a la audiencia.</li><li>Contestar otra cosa.</li></ul>'
+                ph_preg.markdown(txt_preg, unsafe_allow_html=True)
+
+        elif slide == "Pág 123: Ley de Murphy":
+            st.markdown('<div class="titulo-slide">Anticípese a los Imprevistos</div>', unsafe_allow_html=True)
+            
+            col_a, col_b = st.columns(2)
+            with col_a:
+                st.markdown('<div class="alerta"><b>🛡️ Medidas de Seguridad</b><br><br>'
+                            '• Lleve copias de seguridad en múltiples formatos (USB, Nube).<br>'
+                            '• Verifique la sala con anticipación (iluminación, disposición).<br>'
+                            '• Verifique el equipo: Cables, proyector, lápiz óptico.</div>', unsafe_allow_html=True)
+            with col_b:
+                st.image("https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Preparación técnica previa", use_container_width=True)
+            
+            st.markdown('<br><div class="texto-slide"><i>"De esta manera, podrá evitar los contratiempos que la ley de Murphy puede depararle en su presentación."</i></div>', unsafe_allow_html=True)
+
+        elif slide == "Pág 124: Mensaje Final":
+            st.markdown('<div class="titulo-slide">Mensaje Final</div>', unsafe_allow_html=True)
+            
+            # Imagen de gran impacto: Faena minera al atardecer
+            st.image("https://images.unsplash.com/photo-1590486803833-ffc4571713df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80", use_container_width=True)
+            
+            st.markdown('<div class="mensaje-fuerza" style="background-color: #1E3A8A; color: white; padding: 20px; text-align: center; font-size: 2.5rem; border-radius: 10px;">'
+                        '¡Muchas Gracias!<br><span style="font-size: 1.5rem;">Presentaciones que Movilizan - Gestión Minera UDP</span></div>', unsafe_allow_html=True)
+
+# ==============================================================================
+# FIN MÓDULO 04
 # ==============================================================================
