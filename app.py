@@ -148,7 +148,7 @@ elif modulo == "03. Data Storytelling y El Mensaje":
     slide = st.radio("Seleccione la Diapositiva:", ["Pág 35: Títulos vs Mensajes", "Pág 40: Selección de Gráficos", "Pág 45: Tablas vs Scorecards"], horizontal=True, label_visibility="collapsed")
     
     pantalla = st.container(height=650, border=True)
-    import time # Importamos la librería de tiempo para las animaciones
+    import time # Librería para las animaciones sobrias
     import pandas as pd
     
     with pantalla:
@@ -157,72 +157,64 @@ elif modulo == "03. Data Storytelling y El Mensaje":
             
             col1, col2 = st.columns([1, 1.2])
             with col1:
-                # Imagen de contexto: Ingenieros analizando datos en faena
-                st.image("https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", use_container_width=True)
+                st.image("https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Análisis técnico en centro de control", use_container_width=True)
             
             with col2:
-                # Animación sobria: Cascada de texto
-                placeholder = st.empty()
-                texto = ""
+                # Animación de aparición progresiva
+                ph = st.empty()
+                txt = ""
                 
-                # Aparece el primer punto
-                texto += '<div class="alerta"><b>❌ Título Inerte:</b> "Ejecución Presupuestaria de Mantenimiento Q1".<br><span style="font-size: 1.2rem;">(La audiencia debe adivinar al ver la pantalla si los números son buenos o malos).</span></div><br>'
-                placeholder.markdown(texto, unsafe_allow_html=True)
+                txt += '<div class="alerta"><b>❌ Título Inerte (No moviliza):</b><br>"Resultados Operacionales y Costos Q1".<br><span style="font-size: 1.1rem;">Obliga a la audiencia a buscar el problema entre los datos.</span></div><br>'
+                ph.markdown(txt, unsafe_allow_html=True)
+                time.sleep(1.2) # Pausa sobria
                 
-                # Pausa de 1.5 segundos
-                time.sleep(1.5) 
+                txt += '<div class="destacado"><b>✅ Mensaje Directivo (Moviliza):</b><br>"🚨 El sobrecosto en Mantenimiento pone en riesgo el cumplimiento del plan anual: Requiere gestión inmediata."</div><br>'
+                ph.markdown(txt, unsafe_allow_html=True)
+                time.sleep(1.2)
                 
-                # Aparece el segundo punto
-                texto += '<div class="destacado"><b>✅ Mensaje Directivo:</b> "🚨 Sobregasto crítico en Mantenimiento: Necesitamos inyectar 26 kUSD para asegurar la disponibilidad de la flota."</div><br>'
-                placeholder.markdown(texto, unsafe_allow_html=True)
-                
-                # Pausa final
-                time.sleep(1.5)
-                
-                # Aparece el último punto
-                texto += '<div class="texto-slide">El gráfico que acompañe esta lámina debe actuar <b>únicamente</b> como evidencia visual de esta afirmación.</div>'
-                placeholder.markdown(texto, unsafe_allow_html=True)
+                txt += '<div class="texto-slide"><b>Llamado a la Acción:</b> Use el encabezado para decir qué está pasando y qué hay que hacer.</div>'
+                ph.markdown(txt, unsafe_allow_html=True)
 
         elif slide == "Pág 40: Selección de Gráficos":
-            st.markdown('<div class="titulo-slide">Selección Estratégica y Atención Dirigida</div>', unsafe_allow_html=True)
-            st.markdown('<div class="texto-slide">No todos los datos se visualizan igual. En minería, el tiempo es escaso y el gráfico debe servir al mensaje central.</div>', unsafe_allow_html=True)
+            st.markdown('<div class="titulo-slide">Atención Dirigida: El gráfico al servicio del mensaje</div>', unsafe_allow_html=True)
             
-            # Gráfico de barras nativo de Streamlit comparando Presupuesto vs Real
-            datos_costos = pd.DataFrame({
-                "Área Operativa": ["Extracción", "Chancado", "Molienda", "Flotación", "Mantenimiento"],
-                "Presupuesto (kUSD)": [150, 120, 200, 180, 250],
-                "Costo Real (kUSD)": [145, 115, 195, 180, 310] # Anomalía intencional en mantenimiento
+            # Datos simulados de costos mineros
+            datos = pd.DataFrame({
+                "Ítem": ["Energía", "Neumáticos", "Explosivos", "Repuestos", "Mantenimiento"],
+                "Presupuesto": [100, 80, 60, 90, 110],
+                "Real": [98, 82, 58, 92, 160] # La anomalía
             })
             
-            st.bar_chart(datos_costos.set_index("Área Operativa"), color=["#1E3A8A", "#DC2626"])
+            st.markdown('<div class="texto-slide">Compare el presupuesto vs. el gasto real. El gráfico debe destacar la desviación automáticamente.</div>', unsafe_allow_html=True)
+            st.bar_chart(datos.set_index("Ítem"), color=["#1E3A8A", "#DC2626"])
             
-            st.markdown('<div class="destacado">💡 <b>Contraste Visual:</b> Note cómo el sobrecosto real de Mantenimiento (línea roja) rompe la tendencia esperada. En su presentación directiva, la anomalía es el único dato que debe tener peso visual.</div>', unsafe_allow_html=True)
+            st.markdown('<div class="alerta">💡 <b>Observación:</b> Note cómo el color rojo en "Mantenimiento" captura la mirada de inmediato. Eso es atención dirigida.</div>', unsafe_allow_html=True)
 
         elif slide == "Pág 45: Tablas vs Scorecards":
-            st.markdown('<div class="titulo-slide">Minimalismo: De la "Sopa de Números" a los Scorecards</div>', unsafe_allow_html=True)
+            st.markdown('<div class="titulo-slide">Evite la "Sopa de Números": Use Scorecards</div>', unsafe_allow_html=True)
             
             col_a, col_b = st.columns([1, 1.5])
             with col_a:
-                # Imagen de contexto: Centro de control integrado minero (CIO)
-                st.image("https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", use_container_width=True)
+                st.image("https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="Supervisión de flota en tiempo real", use_container_width=True)
             
             with col_b:
-                st.markdown('<div class="texto-slide">Cuando proyecte el estado de múltiples equipos, evite tablas de Excel densas. Use semáforos para acelerar la toma de decisiones.</div><br>', unsafe_allow_html=True)
+                st.markdown('<div class="texto-slide">En un comité operativo, la audiencia necesita saber qué está fallando AHORA.</div><br>', unsafe_allow_html=True)
                 
-                # Animación sobria de Scorecard
-                ph = st.empty()
-                contenido = ""
+                # Animación secuencial de indicadores
+                ph2 = st.empty()
+                ind = ""
                 
-                contenido += '<div style="font-size: 2rem;">Molino SAG 1: 🟢 <b>Operativo</b> (100% Cumplimiento)</div><br>'
-                ph.markdown(contenido, unsafe_allow_html=True)
-                time.sleep(1)
+                ind += '<div style="font-size: 2rem; border-bottom: 1px solid #ddd; padding: 10px;">Camión CAEX 402: 🟢 <b>Disponible</b></div>'
+                ph2.markdown(ind, unsafe_allow_html=True)
+                time.sleep(0.8)
                 
-                contenido += '<div style="font-size: 2rem;">Chancador Primario: 🟡 <b>Alerta Temprana</b> (Revisar desgaste)</div><br>'
-                ph.markdown(contenido, unsafe_allow_html=True)
-                time.sleep(1)
+                ind += '<div style="font-size: 2rem; border-bottom: 1px solid #ddd; padding: 10px;">Pala Hidráulica 05: 🟡 <b>Baja Carga</b></div>'
+                ph2.markdown(ind, unsafe_allow_html=True)
+                time.sleep(0.8)
                 
-                contenido += '<div style="font-size: 2rem; background-color: #FEF2F2; padding: 10px; border-left: 5px solid #DC2626;">Correa Transportadora C1: 🔴 <b>Detención Crítica</b></div>'
-                ph.markdown(contenido, unsafe_allow_html=True)
+                ind += '<div style="font-size: 2rem; background-color: #FEF2F2; padding: 10px; border-left: 10px solid #DC2626;"><b>Chancador Primario: 🔴 Fuera de Servicio</b></div>'
+                ph2.markdown(ind, unsafe_allow_html=True)
+
 # ==============================================================================
 # FIN MÓDULO 03
 # ==============================================================================
