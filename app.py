@@ -157,20 +157,22 @@ elif modulo == "02. La Audiencia es el Centro":
     
     if slide == "1. El Teleprompter":
         st.markdown('<div class="titulo-slide">La pantalla no es su ayuda de memoria</div>', unsafe_allow_html=True)
-        st.markdown('<div class="texto-slide">El cerebro de su audiencia no puede leer texto complejo y escuchar su voz al mismo tiempo. <b>Active el interruptor</b> para ver el contraste corporativo.</div><br>', unsafe_allow_html=True)
+        st.markdown('<div class="texto-slide">El cerebro de su audiencia no puede leer texto complejo y escuchar su voz al mismo tiempo. <b>Active el interruptor</b> para ver el contraste corporativo usando exactamente el mismo caso.</div><br>', unsafe_allow_html=True)
         
         modo_directivo = st.toggle("Desactivar 'Modo Teleprompter' y aplicar Diseño Directivo")
         
         if not modo_directivo:
-            st.error("❌ ESTÁNDAR POBRE: La audiencia leerá esto y dejará de escucharlo.")
+            st.error("❌ ESTÁNDAR POBRE: La audiencia leerá este reporte y dejará de escucharlo.")
             st.markdown("""
             <div class="bad-slide">
-                <h3 style="color: black;">Situación de Mantenimiento Q3</h3>
+                <h3 style="color: black;">Informe de Estado Planta de Molienda - Componente 4B</h3>
                 <ul>
-                    <li>El análisis de la falla indica que hay desgaste prematuro.</li>
-                    <li>La alternativa A demora 2 meses en llegar.</li>
-                    <li>La alternativa B tiene disponibilidad inmediata en bodega central.</li>
-                    <li>Recomendamos la alternativa B para evitar que la producción de la planta de molienda se detenga por completo durante la próxima semana.</li>
+                    <li>A las 04:00 AM se detectó un alza térmica y de vibración en el molino.</li>
+                    <li>El equipo de mantenimiento confirmó una falla inminente en el rodamiento.</li>
+                    <li>Si el componente colapsa, la línea completa se detendrá por 7 días.</li>
+                    <li>Se verificó en sistema y existe un repuesto en la Bodega Central.</li>
+                    <li>Se solicita al comité la autorización urgente para liberar este repuesto.</li>
+                    <li>La acción inmediata evitará la detención total de la línea hoy.</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
@@ -182,7 +184,7 @@ elif modulo == "02. La Audiencia es el Centro":
                 <h3 style="color: #333; margin-top: 0;">Requerimos liberar repuesto de Bodega Central hoy para evitar detención total de la línea.</h3>
             </div>
             """, unsafe_allow_html=True)
-            st.image("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="El expositor entrega el detalle técnico verbalmente, la pantalla ancla el mensaje central.", use_container_width=True)
+            st.image("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", caption="El expositor relata los detalles técnicos verbalmente, la pantalla ancla la decisión.", use_container_width=True)
 
     elif slide == "2. Simulador Operacional":
         st.markdown('<div class="titulo-slide">Simulador: Traduciendo el dato a la audiencia</div>', unsafe_allow_html=True)
@@ -203,7 +205,6 @@ elif modulo == "02. La Audiencia es el Centro":
             st.markdown('<div class="destacado-corp"><b>Mensaje Directivo:</b> "La detención impactó el plan mensual en 15.000 toneladas de cobre fino. Solicitamos adelantar el CAPEX de $250k para un sistema de lubricación redundante, cuyo VAN es positivo al evitar solo una detención futura."</div>', unsafe_allow_html=True)
 
     elif slide == "3. Regla de Adaptación":
-        # Componente de Impacto Corporativo
         st.markdown("""
         <div class="slide-mensaje">
             <h1>A AUDIENCIAS DISTINTAS, TRADUCCIONES DISTINTAS</h1>
@@ -257,7 +258,6 @@ elif modulo == "02. La Audiencia es el Centro":
 # ==============================================================================
 # FIN MÓDULO 02
 # ==============================================================================
-
 
 # ==============================================================================
 # INICIO MÓDULO 03: DATA STORYTELLING Y EL MENSAJE
