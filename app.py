@@ -21,7 +21,7 @@ st.sidebar.info("💡 Tip: Haz clic en la 'X' para ocultar esta barra. Para volv
 modulo = st.sidebar.radio("Seleccione el Módulo:", [
     "00. Introducción y Reglas",
     "01. El Paradigma del Esfuerzo",
-    "02. Los 7 Pasos de Preparación",
+    "02. La Audiencia es el Centro",
     "03. Data Storytelling y El Mensaje",
     "04. Puesta en Escena y Contingencias"
 ])
